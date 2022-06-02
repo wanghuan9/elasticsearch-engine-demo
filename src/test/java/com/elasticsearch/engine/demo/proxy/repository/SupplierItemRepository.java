@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo.proxy.repository;
 
 import com.elasticsearch.engine.demo.dto.query.SupplierItem;
-import com.elasticsearch.engine.demo.dto.query.SupplierItemResExtend;
+import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.AggEntityExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
 import com.elasticsearch.engine.demo.proxy.entity.params.SupplierItemProxyResExtend;
@@ -58,7 +58,7 @@ public interface SupplierItemRepository extends BaseESRepository<SupplierItemEnt
      * @param param
      * @return
      */
-    List<AggEntityExtend> queryAggs(SupplierItemResExtend param);
+    List<AggEntityExtend> queryAggs(PersonResExtend param);
 
     /**
      * 辅助查询

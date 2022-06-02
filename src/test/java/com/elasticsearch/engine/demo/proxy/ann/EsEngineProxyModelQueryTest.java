@@ -1,10 +1,10 @@
-package com.elasticsearch.engine.demo.proxy;
+package com.elasticsearch.engine.demo.proxy.ann;
 
 //import com.elasticsearch.engine.demo.elasticsearchenginedemo.ElasticsearchEngineDemoApplicationTests;
 
 import com.elasticsearch.engine.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.dto.query.SupplierItem;
-import com.elasticsearch.engine.demo.dto.query.SupplierItemResExtend;
+import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.AggEntityExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
 import com.elasticsearch.engine.demo.proxy.entity.params.SupplierItemProxyResExtend;
@@ -75,7 +75,7 @@ public class EsEngineProxyModelQueryTest {
      */
     @Test
     public void querySupplierItemResExtend() {
-        SupplierItemResExtend supplierItemResExtend = new SupplierItemResExtend();
+        PersonResExtend supplierItemResExtend = new PersonResExtend();
         List<String> itemNoList = Lists.newArrayList("20201226204656658857");
         supplierItemResExtend.setItemNoList(itemNoList);
         supplierItemResExtend.setStatus(Sign.DEFAULT_INTER);

@@ -1,18 +1,17 @@
 package com.elasticsearch.engine.demo.base;
 
-import com.elasticsearch.engine.ElasticsearchEngineConfiguration;
 import com.elasticsearch.engine.common.queryhandler.ann.model.EsExecuteHandler;
 import com.elasticsearch.engine.common.utils.JsonParser;
-import com.elasticsearch.engine.demo.dto.query.SupplierItem;
-import com.elasticsearch.engine.demo.dto.query.SupplierItemResExtend;
+import com.elasticsearch.engine.demo.domain.entity.es.PersonEsEntity;
+import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
+import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.AggEntityExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
 import com.elasticsearch.engine.mapping.model.extend.RangeParam;
 import com.elasticsearch.engine.model.annotion.Sign;
 import com.elasticsearch.engine.model.domain.BaseResp;
-import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -21,36 +20,31 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 查询引擎响应结果构建测试
+ * @author wanghuan
+ * @description 自定义扩展响应
+ * <p>
+ * 当查询结果比较复杂 不是简单的将hits转为json对象时, 可以通过自定义响应对结果进行扩展
+ * <p>
+ * 例如 负责的分组嵌套查询, 或者响应结果未map之类的
+ * @mail 958721894@qq.com
+ * @date 2022/6/2 10:59
  */
 @Slf4j
+@SpringBootTest
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = ElasticsearchEngineConfiguration.class)
 public class ParseResponseBaseTest {
 
     @Resource
     private EsExecuteHandler esExecuteHandler;
 
     /**
-     * 测试默认参数 Trem Trems Range
-     */
-    @Test
-    public void findByProductNameAndStatusTest() {
-        SupplierItem supplierItem = new SupplierItem();
-        supplierItem.setStatus(RangeParam.builder().left(0).right(3).build());
-        BaseResp<SupplierItemEntity> baseHitBaseResp = esExecuteHandler.execute(supplierItem, SupplierItemEntity.class);
-        log.info(JsonParser.asJson(baseHitBaseResp));
-    }
-
-    /**
      * 测试普通查询响应
      */
     @Test
-    public void responseTest() {
-        SupplierItem supplierItem = new SupplierItem();
-        List<String> itemNoList = Lists.newArrayList("20201205102325871450", "20201216103025852694");
-        supplierItem.setItemNoList(itemNoList);
-        BaseResp<SupplierItemEntity> baseHitBaseResp = esExecuteHandler.execute(supplierItem, SupplierItemEntity.class);
+    public void findByProductNameAndStatusTest() {
+        PersonBaseQuery person = new PersonBaseQuery();
+        person.setRangeStatus(RangeParam.builder().left(0).right(1).build());
+        BaseResp<SupplierItemEntity> baseHitBaseResp = esExecuteHandler.execute(person, PersonEsEntity.class);
         log.info(JsonParser.asJson(baseHitBaseResp));
     }
 
@@ -59,9 +53,9 @@ public class ParseResponseBaseTest {
      */
     @Test
     public void extendTest() {
-        SupplierItemResExtend supplierItem = new SupplierItemResExtend();
-        supplierItem.setStatus(Sign.DEFAULT_INTER);
-        BaseResp<List<AggEntityExtend>> resp = esExecuteHandler.execute(supplierItem, List.class);
+        PersonResExtend personResExtend = new PersonResExtend();
+        personResExtend.setStatus(Sign.DEFAULT_INTER);
+        BaseResp<List<AggEntityExtend>> resp = esExecuteHandler.execute(personResExtend, List.class);
         List<AggEntityExtend> result = resp.getResult();
         log.info(JsonParser.asJson(result));
     }

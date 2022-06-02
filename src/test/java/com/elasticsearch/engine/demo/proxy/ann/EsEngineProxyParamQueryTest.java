@@ -1,4 +1,4 @@
-package com.elasticsearch.engine.demo.proxy;
+package com.elasticsearch.engine.demo.proxy.ann;
 
 //import com.elasticsearch.engine.demo.elasticsearchenginedemo.ElasticsearchEngineDemoApplicationTests;
 
