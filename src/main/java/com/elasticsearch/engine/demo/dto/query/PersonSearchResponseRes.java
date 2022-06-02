@@ -1,4 +1,4 @@
-package com.elasticsearch.engine.demo.proxy.entity.params;
+package com.elasticsearch.engine.demo.dto.query;
 
 import com.elasticsearch.engine.hook.ResponseHook;
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
@@ -9,11 +9,11 @@ import org.elasticsearch.action.search.SearchResponse;
 import java.util.List;
 
 @Slf4j
-@EsQueryIndex(value = "supplier_item_spare")
+@EsQueryIndex("person_es_index")
 @Data
-public class SupplierItemProxyResExtend implements ResponseHook<SearchResponse> {
+public class PersonSearchResponseRes implements ResponseHook<SearchResponse> {
 
-    private List<String> itemNoList;
+    private List<String> personNoList;
 
     /**
      * user define the method to handle ElasticSearch-Response

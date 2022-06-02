@@ -1,6 +1,6 @@
-package com.elasticsearch.engine.demo.domain.mapper;
+package com.elasticsearch.engine.demo.domain.mysql.mapper;
 
-import com.elasticsearch.engine.demo.domain.entity.PersonExtendEntity;
+import com.elasticsearch.engine.demo.domain.mysql.entity.PersonExtendEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

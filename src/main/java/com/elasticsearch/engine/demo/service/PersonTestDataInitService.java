@@ -2,11 +2,11 @@ package com.elasticsearch.engine.demo.service;
 
 import com.elasticsearch.engine.demo.common.utils.EntityUtils;
 import com.elasticsearch.engine.demo.common.utils.GenerateBusinessNoUtils;
-import com.elasticsearch.engine.demo.domain.entity.PersonEntity;
-import com.elasticsearch.engine.demo.domain.entity.PersonExtendEntity;
-import com.elasticsearch.engine.demo.domain.entity.es.PersonEsEntity;
-import com.elasticsearch.engine.demo.domain.mapper.PersonExtendMapper;
-import com.elasticsearch.engine.demo.domain.mapper.PersonMapper;
+import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
+import com.elasticsearch.engine.demo.domain.mysql.entity.PersonExtendEntity;
+import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
+import com.elasticsearch.engine.demo.domain.mysql.mapper.PersonExtendMapper;
+import com.elasticsearch.engine.demo.domain.mysql.mapper.PersonMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;

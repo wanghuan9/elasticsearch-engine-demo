@@ -1,6 +1,6 @@
-package com.elasticsearch.engine.demo.domain.repository;
+package com.elasticsearch.engine.demo.domain.mysql.repository;
 
-import com.elasticsearch.engine.demo.domain.entity.PersonEntity;
+import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.model.annotion.EsQuery;
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import org.springframework.data.jpa.repository.JpaRepository;

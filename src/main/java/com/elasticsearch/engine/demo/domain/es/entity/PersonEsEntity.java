@@ -1,4 +1,4 @@
-package com.elasticsearch.engine.demo.domain.entity.es;
+package com.elasticsearch.engine.demo.domain.es.entity;
 
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import lombok.Data;

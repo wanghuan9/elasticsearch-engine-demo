@@ -2,7 +2,7 @@ package com.elasticsearch.engine.demo.base;
 
 import com.elasticsearch.engine.common.queryhandler.ann.model.EsExecuteHandler;
 import com.elasticsearch.engine.common.utils.JsonParser;
-import com.elasticsearch.engine.demo.domain.entity.es.PersonEsEntity;
+import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.AggEntityExtend;

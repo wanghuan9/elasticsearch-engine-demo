@@ -16,6 +16,16 @@ import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author wanghuan
+ * @description 自定义扩展响应
+ * <p>
+ * 当查询结果比较复杂 不是简单的将hits转为json对象时, 可以通过自定义响应对结果进行扩展
+ * <p>
+ * 例如 负责的分组嵌套查询, 或者响应结果未map之类的
+ * @mail 958721894@qq.com
+ * @date 2022/6/2 10:59
+ */
 @Slf4j
 @EsQueryIndex("person_es_index")
 @Data

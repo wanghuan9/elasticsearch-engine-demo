@@ -3,10 +3,10 @@ package com.elasticsearch.engine.demo.extend;
 //import com.elasticsearch.engine.demo.elasticsearchenginedemo.ElasticsearchEngineDemoApplicationTests;
 
 import com.elasticsearch.engine.demo.ElasticsearchEngineDemoApplication;
-import com.elasticsearch.engine.demo.domain.entity.ItemsEntity;
-import com.elasticsearch.engine.demo.domain.mapper.ItemsMapper;
-import com.elasticsearch.engine.demo.domain.mapper.PersonMapper;
-import com.elasticsearch.engine.demo.domain.repository.PersonRepository;
+import com.elasticsearch.engine.demo.domain.mysql.entity.ItemsEntity;
+import com.elasticsearch.engine.demo.domain.mysql.mapper.ItemsMapper;
+import com.elasticsearch.engine.demo.domain.mysql.mapper.PersonMapper;
+import com.elasticsearch.engine.demo.domain.mysql.repository.PersonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

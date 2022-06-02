@@ -4,7 +4,7 @@ import com.elasticsearch.engine.demo.dto.query.SupplierItem;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.AggEntityExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
-import com.elasticsearch.engine.demo.proxy.entity.params.SupplierItemProxyResExtend;
+import com.elasticsearch.engine.demo.dto.query.PersonSearchResponseRes;
 import com.elasticsearch.engine.mapping.annotation.From;
 import com.elasticsearch.engine.model.annotion.EsQuery;
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
@@ -65,7 +65,7 @@ public interface SupplierItemRepository extends BaseESRepository<SupplierItemEnt
      *
      * @return
      */
-    SearchResponse querySearchResponse(SupplierItemProxyResExtend param);
+    SearchResponse querySearchResponse(PersonSearchResponseRes param);
 
 
     /**

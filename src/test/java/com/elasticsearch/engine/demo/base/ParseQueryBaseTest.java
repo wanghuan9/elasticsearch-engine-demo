@@ -197,6 +197,9 @@ public class ParseQueryBaseTest {
         person.setToken("token");
         esExecuteHandler.execute(person);
     }
+    
+    //查询参数支持继承
+    //查询参数支持嵌套
 
     /**
      * 测试 自定义扩展查询

@@ -1,4 +1,4 @@
-package com.elasticsearch.engine.demo.domain.entity;
+package com.elasticsearch.engine.demo.domain.mysql.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;

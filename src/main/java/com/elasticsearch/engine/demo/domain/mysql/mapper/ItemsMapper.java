@@ -1,6 +1,6 @@
-package com.elasticsearch.engine.demo.domain.mapper;
+package com.elasticsearch.engine.demo.domain.mysql.mapper;
 
-import com.elasticsearch.engine.demo.domain.entity.ItemsEntity;
+import com.elasticsearch.engine.demo.domain.mysql.entity.ItemsEntity;
 import com.elasticsearch.engine.model.annotion.EsQuery;
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import org.apache.ibatis.annotations.Mapper;
