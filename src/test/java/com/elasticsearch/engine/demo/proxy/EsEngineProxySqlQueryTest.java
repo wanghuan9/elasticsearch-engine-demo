@@ -1,16 +1,17 @@
 package com.elasticsearch.engine.demo.proxy;
 
-//import com.elasticsearch.engine.demo.elasticsearchenginedemo.ElasticsearchEngineDemoApplicationTests;
 
 import com.elasticsearch.engine.common.queryhandler.sql.EsSqlExecuteHandler;
 import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
+import com.elasticsearch.engine.demo.domain.es.repository.PersonEsSqlRepository;
 import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
-import com.elasticsearch.engine.demo.proxy.repository.SupplierItemSqlRepository;
 import com.elasticsearch.engine.model.emenu.SqlFormat;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -19,19 +20,23 @@ import java.util.List;
 
 /**
  * @author wanghuan
- * @description: sql查询测试示例
- * @date 2022-04-24 18:42
+ * @description sql查询测试示例
+ * <p>
+ * 查询的PersonEsParamRepository 必须继承 BaseESRepository 否则无法扫描注册
+ * <p>
+ * @mail 958721894@qq.com
+ * @date 2022/6/2 2022/6/2 14:24
  */
 @Slf4j
 @RunWith(SpringRunner.class)
-//@SpringBootTest(classes = ElasticsearchEngineDemoApplicationTests.class)
+@SpringBootTest
 public class EsEngineProxySqlQueryTest {
 
     @Resource
     private EsSqlExecuteHandler esSqlExecuteHandler;
 
     @Resource
-    private SupplierItemSqlRepository supplierItemSqlRepository;
+    private PersonEsSqlRepository personEsSqlRepository;
 
 
     @Test
@@ -91,25 +96,25 @@ public class EsEngineProxySqlQueryTest {
 
     @Test
     public void testSql2() {
-        SupplierItemEntity supplierItemEntity = supplierItemSqlRepository.queryOne("20201226204656658857", 1);
+        PersonEsEntity supplierItemEntity = personEsSqlRepository.queryOne("20201226204656658857", 1);
         System.out.println(JsonParser.asJson(supplierItemEntity));
     }
 
     @Test
     public void testSql3() {
-        List<SupplierItemEntity> supplierItemEntities = supplierItemSqlRepository.queryList(Lists.newArrayList("20201226204656658857"));
+        List<PersonEsEntity> supplierItemEntities = personEsSqlRepository.queryList(Lists.newArrayList("20201226204656658857"));
         System.out.println(JsonParser.asJson(supplierItemEntities));
     }
 
     @Test
     public void testSql4() {
-        SupplierItemEntity supplierItemEntity = supplierItemSqlRepository.queryByCreateDt(LocalDateTime.now());
+        PersonEsEntity supplierItemEntity = personEsSqlRepository.queryByCreateDt(LocalDateTime.now());
         System.out.println(JsonParser.asJson(supplierItemEntity));
     }
 
     @Test
     public void testSql5() {
-        Long count = supplierItemSqlRepository.count();
+        Long count = personEsSqlRepository.count();
         System.out.println(JsonParser.asJson(count));
     }
 
