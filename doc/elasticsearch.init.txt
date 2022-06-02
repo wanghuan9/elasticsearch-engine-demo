@@ -1,0 +1,140 @@
+# 6.0
+PUT /person_es_index
+{
+  "settings": {
+    "max_result_window": "10000000",
+    "number_of_shards": 5,
+    "number_of_replicas": 5,
+    "analysis": {
+      "normalizer": {
+        "my_normalizer": {
+          "filter": [
+            "lowercase"
+          ],
+          "type": "custom",
+          "char_filter": []
+        }
+      }
+    }
+  },
+  "mappings": {
+    "supply_product": {
+      "dynamic": "strict",
+      "properties": {
+        "id": {
+          "type": "long"
+        },
+        "personNo": {
+          "type": "keyword"
+        },
+        "personName": {
+          "type": "keyword"
+        },
+        "phone": {
+          "type": "long"
+        },
+        "mail": {
+          "type": "keyword"
+        },
+        "salary" : {
+          "type" : "double"
+        },
+        "company": {
+          "type": "keyword"
+        },
+        "status" : {
+          "type" : "integer"
+        },
+        "sex" : {
+          "type" : "integer"
+        },
+        "address": {
+          "type": "keyword"
+        },
+        "hobby": {
+          "type": "keyword"
+        },
+        "createTime": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss || yyyy-MM-dd || yyyy/MM/dd HH:mm:ss|| yyyy/MM/dd || epoch_millis"
+        },
+        "createUser": {
+          "type": "keyword"
+        }
+      }
+    }
+  },
+  "aliases": {
+    "person_es_index_alias": {}
+  }
+}
+
+
+# 7.0
+PUT /person_es_index
+{
+  "settings": {
+    "max_result_window": "10000000",
+    "number_of_shards": 5,
+    "number_of_replicas": 5,
+    "analysis": {
+      "normalizer": {
+        "my_normalizer": {
+          "filter": [
+            "lowercase"
+          ],
+          "type": "custom",
+          "char_filter": []
+        }
+      }
+    }
+  },
+  "mappings": {
+      "dynamic": "strict",
+      "properties": {
+        "id": {
+          "type": "long"
+        },
+        "personNo": {
+          "type": "keyword"
+        },
+        "personName": {
+          "type": "keyword"
+        },
+        "phone": {
+          "type": "long"
+        },
+        "mail": {
+          "type": "keyword"
+        },
+        "salary" : {
+          "type" : "double"
+        },
+        "company": {
+          "type": "keyword"
+        },
+        "status" : {
+          "type" : "integer"
+        },
+        "sex" : {
+          "type" : "integer"
+        },
+        "address": {
+          "type": "keyword"
+        },
+        "hobby": {
+          "type": "keyword"
+        },
+        "createTime": {
+          "type": "date",
+          "format": "yyyy-MM-dd HH:mm:ss || yyyy-MM-dd || yyyy/MM/dd HH:mm:ss|| yyyy/MM/dd || epoch_millis"
+        },
+        "createUser": {
+          "type": "keyword"
+        }
+      }
+  },
+  "aliases": {
+    "person_es_index_alias": {}
+  }
+}
