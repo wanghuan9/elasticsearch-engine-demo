@@ -5,7 +5,7 @@ import com.elasticsearch.engine.common.queryhandler.sql.EsSqlExecuteHandler;
 import com.elasticsearch.engine.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.es.repository.PersonEsSqlRepository;
-import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
+import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
 import com.elasticsearch.engine.model.emenu.SqlFormat;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -38,23 +39,89 @@ public class EsEngineProxySqlQueryTest {
     @Resource
     private PersonEsSqlRepository personEsSqlRepository;
 
-
+    /**
+     * 单个查询
+     */
     @Test
+    public void testSqlOne() {
+        PersonEsEntity personEsEntity = personEsSqlRepository.queryOne("US2022060100001", 1);
+        log.info("res:{}", JsonParser.asJson(personEsEntity));
+    }
 
-    public void testSql1() {
-
-        String sql = "select * from supplier_item_spare where item_no='20201226204656658857'";
-
-        String s = esSqlExecuteHandler.queryBySql(sql, SqlFormat.JSON);
-        System.out.println(s);
-
-        //@Query(value = "insert into studenttb(student_name,student_age) value(?1,?2)", nativeQuery = true)
-        List<SupplierItemEntity> supplierItemEntities = esSqlExecuteHandler.queryBySql(sql, SupplierItemEntity.class);
+    /**
+     *  list 查询
+     */
+    @Test
+    public void testSqlList() {
+        List<PersonEsEntity> supplierItemEntities = personEsSqlRepository.queryList(Lists.newArrayList("US2022060100001","US2022060100002"));
         System.out.println(JsonParser.asJson(supplierItemEntities));
     }
 
+    /**
+     * 时间查询
+     */
     @Test
-    public void trs() {
+    public void testSqlTime() {
+        PersonEsEntity supplierItemEntity = personEsSqlRepository.queryByCreateDt(LocalDateTime.now().minusDays(300));
+        System.out.println(JsonParser.asJson(supplierItemEntity));
+    }
+
+    /**
+     * count查询
+     */
+    @Test
+    public void testSqlCount() {
+        Long count = personEsSqlRepository.count();
+        System.out.println(JsonParser.asJson(count));
+    }
+
+    /**
+     * like查询
+     */
+    @Test
+    public void testSqlLike() {
+        List<PersonEsEntity> res = personEsSqlRepository.likePersonName("狗",2);
+        System.out.println(JsonParser.asJson(res));
+    }
+
+    /**
+     * 分组查询
+     */
+    @Test
+    public void testSqlGroup() {
+        List<PersonEsEntity> res = personEsSqlRepository.groupBy("狗",2);
+        System.out.println(JsonParser.asJson(res));
+    }
+
+    /**
+     * 聚合查询(sum)
+     */
+    @Test
+    public void testSqlSum() {
+        BigDecimal res = personEsSqlRepository.sum("腾讯");
+        System.out.println(JsonParser.asJson(res));
+    }
+
+    /**
+     * 分组聚合查询
+     */
+    @Test
+    public void testSqlSumGroup() {
+        List<PersonGroupResult> results = personEsSqlRepository.sumGroup(Lists.newArrayList("蚂蚁", "米哈游", "美团", "字节跳动"), 4);
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    /**
+     * 分组聚合查询
+     */
+    @Test
+    public void testSqlHaving() {
+        List<PersonGroupResult> results = personEsSqlRepository.having(Lists.newArrayList("蚂蚁", "米哈游", "美团", "字节跳动"), 4);
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    @Test
+    public void testSql() {
         //常规
         String sql1 = "select * from supplier_item_spare where item_no='20201226204656658857'";
         //like
@@ -67,7 +134,8 @@ public class EsEngineProxySqlQueryTest {
         String sql5 = "select count(1) from supplier_item_spare";
         //having
         String sql6 = "select status,count(*) as count  from supplier_item_spare group by status having count>0";
-        
+
+//        Unknown column
         /**
          * 不支持的sql
          */
@@ -92,31 +160,4 @@ public class EsEngineProxySqlQueryTest {
         System.out.println("sqlError2: " +se2);
 
     }
-
-
-    @Test
-    public void testSql2() {
-        PersonEsEntity supplierItemEntity = personEsSqlRepository.queryOne("20201226204656658857", 1);
-        System.out.println(JsonParser.asJson(supplierItemEntity));
-    }
-
-    @Test
-    public void testSql3() {
-        List<PersonEsEntity> supplierItemEntities = personEsSqlRepository.queryList(Lists.newArrayList("20201226204656658857"));
-        System.out.println(JsonParser.asJson(supplierItemEntities));
-    }
-
-    @Test
-    public void testSql4() {
-        PersonEsEntity supplierItemEntity = personEsSqlRepository.queryByCreateDt(LocalDateTime.now());
-        System.out.println(JsonParser.asJson(supplierItemEntity));
-    }
-
-    @Test
-    public void testSql5() {
-        Long count = personEsSqlRepository.count();
-        System.out.println(JsonParser.asJson(count));
-    }
-
-
 }

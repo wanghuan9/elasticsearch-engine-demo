@@ -47,7 +47,7 @@ public class EsEngineProxyModelQueryTest {
     @Test
     public void queryOneResponse() {
         PersonBaseQuery person = new PersonBaseQuery();
-        List<String> itemNoList = Lists.newArrayList("US180493714044514304");
+        List<String> itemNoList = Lists.newArrayList("US2022060100001");
         person.setPersonNoList(itemNoList);
         PersonEsEntity personEsEntity = personEsModelRepository.queryOne(person);
         log.info("res:{}", JsonParser.asJson(personEsEntity));
@@ -59,7 +59,7 @@ public class EsEngineProxyModelQueryTest {
     @Test
     public void queryListResponse() {
         PersonBaseQuery person = new PersonBaseQuery();
-        List<String> itemNoList = Lists.newArrayList("US180493714044514304","US180493714140983296");
+        List<String> itemNoList = Lists.newArrayList("US2022060100001","US2022060100002");
         person.setPersonNoList(itemNoList);
         List<PersonEsEntity> personEsEntityList = personEsModelRepository.queryList(person);
         log.info("res:{}", JsonParser.asJson(personEsEntityList));
@@ -73,7 +73,7 @@ public class EsEngineProxyModelQueryTest {
     @Test
     public void queryListResponseBaseResp() {
         PersonBaseQuery person = new PersonBaseQuery();
-        List<String> itemNoList = Lists.newArrayList("US180493714044514304","US180493714140983296");
+        List<String> itemNoList = Lists.newArrayList("US2022060100001","US2022060100002");
         person.setPersonNoList(itemNoList);
         BaseResp<PersonEsEntity> resp = personEsModelRepository.queryListBaseResp(person);
         log.info("res:{}", JsonParser.asJson(resp));
@@ -89,7 +89,7 @@ public class EsEngineProxyModelQueryTest {
     public void queryAggDefaultResp(){
         PersonBaseQuery person = new PersonBaseQuery();
         person.setGroupStatus(SignParam.builder());
-        BaseResp<DefaultAggResp> resp = personEsModelRepository.queryAggsDefaultResp(person);
+        BaseResp<DefaultAggResp> resp = personEsModelRepository.queryAggDefaultResp(person);
         log.info("res:{}", JsonParser.asJson(resp));
     }
 
@@ -100,10 +100,10 @@ public class EsEngineProxyModelQueryTest {
     @Test
     public void querySupplierItemResExtend() {
         PersonResExtend personResExtend = new PersonResExtend();
-        List<String> itemNoList = Lists.newArrayList("20201226204656658857");
+        List<String> itemNoList = Lists.newArrayList("US2022060100001");
         personResExtend.setItemNoList(itemNoList);
         personResExtend.setStatus(Sign.DEFAULT_INTER);
-        List<DefaultAggResp> aggEntityExtends = personEsModelRepository.queryAggs(personResExtend);
+        List<DefaultAggResp> aggEntityExtends = personEsModelRepository.queryAgg(personResExtend);
         log.info("res:{}", JsonParser.asJson(aggEntityExtends));
     }
 
@@ -113,7 +113,7 @@ public class EsEngineProxyModelQueryTest {
     @Test
     public void querySearchResponse() {
         PersonSearchResponseRes supplierItemResExtend = new PersonSearchResponseRes();
-        List<String> itemNoList = Lists.newArrayList("20201226204656658857");
+        List<String> itemNoList = Lists.newArrayList("US2022060100001");
         supplierItemResExtend.setPersonNoList(itemNoList);
         SearchResponse searchResponse = personEsModelRepository.querySearchResponse(supplierItemResExtend);
         log.info("res:{}", JsonParser.asJson(searchResponse));

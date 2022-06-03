@@ -43,7 +43,7 @@ public class ParseQueryBaseTest {
         PersonBaseQuery person = new PersonBaseQuery();
         person.setRangeStatus(RangeParam.builder().left(1).right(2).build());
         List<String> itemNoList = Lists.newArrayList();
-        itemNoList.add("US180385651795066880");
+        itemNoList.add("US2022060100001");
         person.setPersonNos(itemNoList);
         person.setSalary(new BigDecimal("22.01"));
         person.setCreateTime(RangeParam.builder().left(LocalDateTime.now()).right(LocalDateTime.now().plusDays(1L)).build());
@@ -102,7 +102,7 @@ public class ParseQueryBaseTest {
     public void shouldTest() {
         PersonShould person = new PersonShould();
         person.setPersonName("李狗蛋");
-        person.setPersonNo("US180385638578814976");
+        person.setPersonNo("US2022060100001");
         person.setPhone(18800000003L);
         esExecuteHandler.execute(person);
     }
@@ -182,7 +182,7 @@ public class ParseQueryBaseTest {
     public void collapseTest() {
         PersonBaseQuery person = new PersonBaseQuery();
         List<String> itemNoList = Lists.newArrayList();
-        itemNoList.add("US180385651795066880");
+        itemNoList.add("US2022060100001");
         person.setPersonNoList(itemNoList);
         esExecuteHandler.execute(person);
     }
@@ -219,7 +219,7 @@ public class ParseQueryBaseTest {
     @Test
     public void nestedExtendTest() {
         PersonReqExtendInherit personReqExtendInherit = new PersonReqExtendInherit();
-        List<String> list = Lists.newArrayList("US180385651795066880", "US180385650129928192");
+        List<String> list = Lists.newArrayList("US2022060100001", "US2022060100002");
         personReqExtendInherit.setStatus(4);
         personReqExtendInherit.setPersonNoList(list);
         personReqExtendInherit.setPersonName("郭德纲");
@@ -233,7 +233,7 @@ public class ParseQueryBaseTest {
     public void extendExtendTest() {
         PersonReqExtendNested supplierItemNestedExtend = new PersonReqExtendNested();
         PersonReqExtend personReqExtend = new PersonReqExtend();
-        List<String> list = Lists.newArrayList("6547831", "6547832");
+        List<String> list = Lists.newArrayList("US2022060100001", "US2022060100002");
         personReqExtend.setStatus(1);
         personReqExtend.setPersonNoList(list);
         supplierItemNestedExtend.setPersonReqExtend(personReqExtend);

@@ -2,6 +2,8 @@ package com.elasticsearch.engine.demo.common.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 /**
  * @author wanghuan
@@ -12,7 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GenerateBusinessNoUtils {
 
-
+    private static AtomicInteger count = new AtomicInteger();
+    
     /**
      * 生成仓库编码
      *
@@ -21,4 +24,17 @@ public class GenerateBusinessNoUtils {
     public static String generateUserNo() {
         return "US" + new SnowflakeIdWorker(7, 8, 9).nextId();
     }
+
+    /**
+     * 生成自增业务单号
+     *
+     * @return
+     */
+    public static String generateBusinessNo() {
+        String key = "US" + 20220601;
+        long num = count.incrementAndGet();
+        String str = String.format("%05d", num);
+        return key + str;
+    }
+
 }

@@ -41,18 +41,8 @@ public class EsEngineProxyParamQueryTest {
      */
     @Test
     public void queryOneResponse() {
-        PersonEsEntity supplierItemEntity = personEsParamRepository.queryOne("20201226204656658857", 1);
+        PersonEsEntity supplierItemEntity = personEsParamRepository.queryOne("US2022060100001", 1);
         log.info("res:{}", JsonParser.asJson(supplierItemEntity));
-    }
-
-
-    /**
-     * 查询单个测试
-     */
-    @Test
-    public void queryOneResponse2() {
-        List<PersonEsEntity> supplierItemEntities = personEsParamRepository.queryList(LocalDateTime.now());
-        log.info("res:{}", JsonParser.asJson(supplierItemEntities));
     }
 
 
@@ -61,8 +51,17 @@ public class EsEngineProxyParamQueryTest {
      */
     @Test
     public void queryListResponse() {
-        List<String> itemNoList = Lists.newArrayList("20201226204656658857");
-        List<PersonEsEntity> res = personEsParamRepository.queryList(itemNoList);
+        List<String> personNoList = Lists.newArrayList("US2022060100001","US2022060100002");
+        List<PersonEsEntity> res = personEsParamRepository.queryList(personNoList);
         log.info("res:{}", JsonParser.asJson(res));
+    }
+
+    /**
+     * 时间查询
+     */
+    @Test
+    public void queryOneResponse2() {
+        List<PersonEsEntity> supplierItemEntities = personEsParamRepository.queryBycreateTime(LocalDateTime.now().minusDays(300),LocalDateTime.now());
+        log.info("res:{}", JsonParser.asJson(supplierItemEntities));
     }
 }

@@ -14,8 +14,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @EsQueryIndex("person_es_index")
-public class PersonEsEntity {
-    private Long id;
+public class PersonEsEntity  {
     private String personNo;
     private String personName;
     private Long phone;

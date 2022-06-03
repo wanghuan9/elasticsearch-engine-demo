@@ -1,10 +1,7 @@
 package com.elasticsearch.engine.demo.domain.es.repository;
 
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
-import com.elasticsearch.engine.mapping.annotation.Collapse;
-import com.elasticsearch.engine.mapping.annotation.From;
-import com.elasticsearch.engine.mapping.annotation.Term;
-import com.elasticsearch.engine.mapping.annotation.Terms;
+import com.elasticsearch.engine.mapping.annotation.*;
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import com.elasticsearch.engine.model.domain.BaseESRepository;
 
@@ -31,24 +28,24 @@ public interface PersonEsParamRepository extends BaseESRepository<PersonEsEntity
     /**
      * 查询单个
      *
-     * @param itemNo
+     * @param personNo
      * @return
      */
-    PersonEsEntity queryOne(@Term String itemNo, @Collapse Integer status);
+    PersonEsEntity queryOne(@Term String personNo, @Collapse Integer status);
 
     /**
      * List查询
      *
      * @return
      */
-    List<PersonEsEntity> queryList(@Terms List<String> itemNoList);
+    List<PersonEsEntity> queryList(@Terms List<String> personNoList);
 
     /**
      * 时间查询
      *
      * @return
      */
-    List<PersonEsEntity> queryList(@From LocalDateTime createDt);
+    List<PersonEsEntity> queryBycreateTime(@From LocalDateTime createTimeStart,@To LocalDateTime createTimeEnd);
 
 
 }

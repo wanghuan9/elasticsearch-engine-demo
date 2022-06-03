@@ -17,8 +17,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -55,14 +57,14 @@ public class PersonTestDataInitService {
         ArrayList<PersonExtendEntity> personExtends = new ArrayList<>(count);
         try {
             for (int i = 0; i < count; i++) {
-                String personNo = GenerateBusinessNoUtils.generateUserNo();
+                String personNo = GenerateBusinessNoUtils.generateBusinessNo();
                 persons.add(getPerson(personNo, count));
                 personExtends.add(getPersonExtend(personNo, count));
                 Thread.sleep(10);
             }
+            writeDataToES(persons,personExtends,indexName);
             personMapper.insertList(persons);
             personExtendMapper.insertList(personExtends);
-            writeDataToES(persons,personExtends,indexName);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -96,6 +98,7 @@ public class PersonTestDataInitService {
      * @param personExtends
      * @param indexName
      */
+    @Transactional(rollbackOn = Exception.class)
     public void writeDataToES(List<PersonEntity> persons,List<PersonExtendEntity> personExtends, String indexName) {
         List<Map<String , Object>> list = new ArrayList<>();
         for(int i=0;i<persons.size();i++){
@@ -104,6 +107,7 @@ public class PersonTestDataInitService {
             PersonEsEntity personEsEntity = new PersonEsEntity();
             BeanUtils.copyProperties(personEntity,personEsEntity);
             BeanUtils.copyProperties(personExtendEntity,personEsEntity);
+            personEsEntity.setCreateTime(LocalDateTime.now());
             list.add(EntityUtils.entityToMap(personEsEntity));
         }
         bulkAddEsDocument(list,indexName);

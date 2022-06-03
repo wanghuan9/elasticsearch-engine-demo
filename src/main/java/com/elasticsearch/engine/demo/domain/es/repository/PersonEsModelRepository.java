@@ -58,7 +58,7 @@ public interface PersonEsModelRepository extends BaseESRepository<PersonEsEntity
      * @param param
      * @return
      */
-    BaseResp<DefaultAggResp> queryAggsDefaultResp(PersonBaseQuery param);
+    BaseResp<DefaultAggResp> queryAggDefaultResp(PersonBaseQuery param);
 
     /**
      * 自定义结果查询(分组查询)
@@ -66,7 +66,7 @@ public interface PersonEsModelRepository extends BaseESRepository<PersonEsEntity
      * @param param
      * @return
      */
-    List<DefaultAggResp> queryAggs(PersonResExtend param);
+    List<DefaultAggResp> queryAgg(PersonResExtend param);
 
     /**
      * 自定义结果查询(拿到原生的SearchResponse)
