@@ -5,11 +5,11 @@ import com.elasticsearch.engine.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
-import com.elasticsearch.engine.demo.execute.resultmodel.AggEntityExtend;
 import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
 import com.elasticsearch.engine.mapping.model.extend.RangeParam;
 import com.elasticsearch.engine.model.annotion.Sign;
 import com.elasticsearch.engine.model.domain.BaseResp;
+import com.elasticsearch.engine.model.domain.DefaultAggResp;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,8 +55,8 @@ public class ParseResponseBaseTest {
     public void extendTest() {
         PersonResExtend personResExtend = new PersonResExtend();
         personResExtend.setStatus(Sign.DEFAULT_INTER);
-        BaseResp<List<AggEntityExtend>> resp = esExecuteHandler.execute(personResExtend, List.class);
-        List<AggEntityExtend> result = resp.getResult();
+        BaseResp<List<DefaultAggResp>> resp = esExecuteHandler.execute(personResExtend, List.class);
+        List<DefaultAggResp> result = resp.getResult();
         log.info(JsonParser.asJson(result));
     }
 
