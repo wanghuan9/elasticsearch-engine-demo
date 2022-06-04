@@ -66,7 +66,8 @@ public interface PersonEsSqlRepository extends BaseESRepository<PersonEsEntity, 
      *
      * @return
      */
-    @EsQuery("SELECT * FROM person_es_index WHERE personName  LIKE '%${personName}%' AND status = #{status}")
+    /*@EsQuery("SELECT * FROM person_es_index WHERE personName  LIKE '%${personName}%' AND status = #{status}")*/
+    @EsQuery("SELECT * FROM person_es_index WHERE personName  LIKE CONCAT('%',#{personName},'%') AND status = #{status}")
     List<PersonEsEntity> likePersonName(String personName, Integer status);
 
     /**

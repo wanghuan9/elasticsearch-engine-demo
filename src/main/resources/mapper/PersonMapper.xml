@@ -11,7 +11,51 @@
         </foreach>
     </insert>
     
-    <select id="getById" resultType="com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity">
-        SELECT * FROM person WHERE id=1;
+    <select id="queryOne" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT * FROM person WHERE person_no = #{personNo} AND status = #{status}
+    </select>
+    
+    <select id="queryList" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT * FROM person WHERE person_no IN
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+    
+    <select id="queryByCreateDt" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT * FROM person WHERE create_time > #{createDt}
+    </select>
+    
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(1) FROM person
+    </select>
+    
+    <select id="likePersonName" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        <!--SELECT * FROM person_es_index WHERE person_name  LIKE '%${personName}%' AND status = #{status}-->
+        SELECT * FROM person WHERE person_name  LIKE  CONCAT('%', '#{personName}', '%') AND status = #{status}
+       
+    </select>
+    
+    <select id="groupBy" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT status FROM person WHERE person_name  LIKE '%${personName}%' AND status = #{status} GROUP BY status
+    </select>
+    
+    <select id="sum" resultType="java.math.BigDecimal">
+        SELECT SUM(salary) AS sumSalary FROM person WHERE company = #{company}
+    </select>
+    
+    <select id="sumGroup" resultType="com.elasticsearch.engine.demo.dto.result.PersonGroupResult">
+        SELECT company,SUM(salary) AS sumSalary FROM person WHERE company IN
+        <foreach collection="company" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+        GROUP BY company
+    </select>
+    
+    <select id="having" resultType="com.elasticsearch.engine.demo.dto.result.PersonGroupResult">
+        SELECT company,SUM(salary) AS sumSalary FROM person WHERE company IN
+        <foreach collection="company" item="item" index="index" open="(" close=")" separator=",">
+            #{item}
+        </foreach>GROUP BY company HAVING sumSalary>450000
     </select>
 </mapper>
