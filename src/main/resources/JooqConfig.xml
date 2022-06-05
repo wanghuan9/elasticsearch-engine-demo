@@ -2,7 +2,7 @@
 <configuration>
     <jdbc>
         <driver>com.mysql.jdbc.Driver</driver>
-        <url>jdbc:mysql://127.0.0.1:3306/person?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=CTT</url>
+        <url>jdbc:mysql://127.0.0.1:3306/user?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=CTT</url>
         <user>root</user>
         <password>admins</password>
     </jdbc>
@@ -19,11 +19,11 @@
             <overridePrimaryKeys>override_primmary_key</overridePrimaryKeys>
 
             <!--include和exclude用于控制为数据库中哪些表生成代码-->
-            <includes>product</includes>
+           <!-- <includes></includes>-->
             <!--<excludes></excludes>-->
 
             <!--数据库名称-->
-            <inputSchema>person</inputSchema>
+            <inputSchema>user</inputSchema>
         </database>
 
         <generate>

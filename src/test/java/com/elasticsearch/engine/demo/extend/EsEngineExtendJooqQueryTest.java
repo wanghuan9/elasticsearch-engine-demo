@@ -1,10 +1,8 @@
 package com.elasticsearch.engine.demo.extend;
 
-
 import com.elasticsearch.engine.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
-import com.elasticsearch.engine.demo.domain.mysql.repository.PersonExtendRepository;
-import com.elasticsearch.engine.demo.domain.mysql.repository.PersonRepository;
+import com.elasticsearch.engine.demo.domain.mysql.jooq.repository.PersonJooqDao;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -19,30 +17,24 @@ import java.util.List;
 
 /**
  * @author wanghuan
- * @description mybatis查询测试示例
- * <p>
- * 查询的PersonEsParamRepository 必须继承 BaseESRepository 否则无法扫描注册
- * <p>
+ * @description jooq查询测试示例
  * @mail 958721894@qq.com
- * @date 2022/6/2 2022/6/2 14:24
+ * @date 2022-06-05 12:45
  */
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class EsEngineExtendJpaQueryTest {
-
+public class EsEngineExtendJooqQueryTest {
+    
     @Resource
-    private PersonRepository personRepository;
-
-    @Resource
-    private PersonExtendRepository personExtendRepository;
+    private PersonJooqDao personJooqDao;
 
     /**
      * 单个查询
      */
     @Test
     public void testSqlOne() {
-        PersonEntity personEntity = personRepository.getByPersonNoAndStatus("US2022060100001", 1);
+        PersonEntity personEntity = personJooqDao.getByPersonNoAndStatus("US2022060100001", 1);
         log.info("res:{}", JsonParser.asJson(personEntity));
     }
 
@@ -51,7 +43,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlList() {
-        List<PersonEntity> supplierItemEntities = personRepository.findByPersonNoIn(Lists.newArrayList("US2022060100001","US2022060100002"));
+        List<PersonEntity> supplierItemEntities = personJooqDao.findByPersonNoIn(Lists.newArrayList("US2022060100001","US2022060100002"));
         System.out.println(JsonParser.asJson(supplierItemEntities));
     }
 
@@ -60,7 +52,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlTime() {
-        List<PersonEntity> supplierItemEntity = personRepository.findByCreateTime(LocalDateTime.now().minusDays(300));
+        List<PersonEntity> supplierItemEntity = personJooqDao.findByCreateTime(LocalDateTime.now().minusDays(300));
         System.out.println(JsonParser.asJson(supplierItemEntity));
     }
 
@@ -69,7 +61,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlCount() {
-        Long count = personRepository.countByStatus(2);
+        Long count = personJooqDao.countByStatus(2);
         System.out.println(JsonParser.asJson(count));
     }
 
@@ -78,7 +70,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlLike() {
-        List<PersonEntity> res = personRepository.findByPersonLike("狗","蚁");
+        List<PersonEntity> res = personJooqDao.findByPersonLike("%狗%","%蚁%");
         System.out.println(JsonParser.asJson(res));
     }
 
@@ -87,7 +79,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlGroup() {
-        List<PersonEntity> res = personRepository.groupBy("李狗蛋");
+        List<PersonEntity> res = personJooqDao.groupBy("%李狗蛋%");
         System.out.println(JsonParser.asJson(res));
     }
 
@@ -96,7 +88,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlSum() {
-        double res = personRepository.sumQuery("腾讯");
+        double res = personJooqDao.sumQuery("腾讯");
         System.out.println(JsonParser.asJson(res));
     }
 
@@ -105,7 +97,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlSumGroup() {
-        List<PersonGroupResult> results = personRepository.sumGroup(Lists.newArrayList("蚂蚁", "米哈游", "美团", "字节跳动"), 4);
+        List<PersonGroupResult> results = personJooqDao.sumGroup(Lists.newArrayList("蚂蚁", "米哈游", "美团", "字节跳动"), 4);
         System.out.println(JsonParser.asJson(results));
     }
 
@@ -114,9 +106,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlHaving() {
-        List<PersonGroupResult> results = personRepository.havingQuery(Lists.newArrayList("蚂蚁", "米哈游", "美团", "字节跳动"), 4);
+        List<PersonGroupResult> results = personJooqDao.havingQuery(Lists.newArrayList("蚂蚁", "米哈游", "美团", "字节跳动"), 450000);
         System.out.println(JsonParser.asJson(results));
     }
-
-  
 }

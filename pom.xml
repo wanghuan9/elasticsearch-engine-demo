@@ -2,6 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
     <groupId>com.elasticsearch.engine.demo</groupId>
     <artifactId>elasticsearch-engine-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -14,14 +20,14 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <plugin.maven.compiler.version>3.8.1</plugin.maven.compiler.version>
-        <spring.boot.version>2.2.0.RELEASE</spring.boot.version>
-        <elasticsearch.client.version>7.15.2</elasticsearch.client.version>
+        <elasticsearch.client.version>7.17.4</elasticsearch.client.version>
         <jackson.core.version>2.10.1</jackson.core.version>
         <google.guava.version>23.0</google.guava.version>
         <apache.collections4.version>4.1</apache.collections4.version>
         <apache.common.lang3.version>3.5</apache.common.lang3.version>
         <lombok.version>1.18.22</lombok.version>
         <mybatis.version>3.4.6</mybatis.version>
+        <jooq.version>3.12.4</jooq.version>
     </properties>
     <dependencies>
         <dependency>
@@ -32,17 +38,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -76,12 +79,12 @@
             <version>${google.guava.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>elasticsearch-rest-high-level-client</artifactId>
-            <version>${elasticsearch.client.version}</version>
-            <scope>compile</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.elasticsearch.client</groupId>-->
+<!--            <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
+<!--            <version>${elasticsearch.client.version}</version>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
         <!--mybatis起步依赖-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -100,7 +103,23 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${spring.boot.version}</version>
+        </dependency>
+        <!--jooq starter：导入JOOQ框架 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jooq</artifactId>
+        </dependency>
+
+        <!--jooq 代码映射插件 -->
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-meta</artifactId>
+            <version>${jooq.version}</version>
         </dependency>
     </dependencies>
 
@@ -109,7 +128,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

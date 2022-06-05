@@ -26,13 +26,17 @@ import java.util.List;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultCatalog extends CatalogImpl {
 
-    private static final long serialVersionUID = -1212801224;
+    private static final long serialVersionUID = -1328491123;
 
     /**
      * The reference instance of <code></code>
      */
     public static final DefaultCatalog DEFAULT_CATALOG = new DefaultCatalog();
 
+    /**
+     * The schema <code>user</code>.
+     */
+    public final User USER = com.elasticsearch.engine.demo.domain.mysql.jooq.generator.User.USER;
 
     /**
      * No further instances allowed
@@ -49,6 +53,7 @@ public class DefaultCatalog extends CatalogImpl {
     }
 
     private final List<Schema> getSchemas0() {
-        return Arrays.<Schema>asList();
+        return Arrays.<Schema>asList(
+            User.USER);
     }
 }

@@ -40,7 +40,7 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
 
     @JpaEsQuery
     @Query(value = "SELECT SUM(salary) AS sumSalary FROM person WHERE company = ?1", nativeQuery = true)
-    double sum(String company);
+    double sumQuery(String company);
 
     @JpaEsQuery
     @Query(value = "SELECT company,SUM(salary) AS sumSalary FROM person WHERE company IN (?1)  GROUP BY company", nativeQuery = true)
@@ -48,6 +48,6 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
 
     @JpaEsQuery
     @Query(value = "SELECT company,SUM(salary) AS sumSalary FROM person WHERE company IN (?1)  GROUP BY company HAVING sumSalary>450000", nativeQuery = true)
-    List<PersonGroupResult> having(List<String> company, Integer status);
+    List<PersonGroupResult> havingQuery(List<String> company, Integer status);
 
 }
