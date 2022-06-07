@@ -24,7 +24,7 @@ public interface PersonMapper {
 
     int insertList(@Param("persons") List<PersonEntity> persons);
 
-    @EsQuery
+    @EsQuery(backColumn = "personNo",backColumnType = String.class)
     PersonEsEntity queryOne(@Param("personNo") String personNo, @Param("status") Integer status);
 
     @EsQuery

@@ -18,7 +18,7 @@ import java.util.List;
 @EsQueryIndex("person_es_index")
 public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
 
-    @JpaEsQuery
+    @JpaEsQuery(backColumn = "personNo",backColumnType = String.class)
     PersonEntity getByPersonNoAndStatus(String personNo, Integer status);
 
     @JpaEsQuery

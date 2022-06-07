@@ -35,7 +35,7 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
      * @param status
      * @return
      */
-    @JooqEsQuery
+    @JooqEsQuery(backColumn = "personNo",backColumnType = String.class)
     @Override
     public PersonEntity getByPersonNoAndStatus(String personNo, Integer status) {
         return context.select().from(PERSON).where(
@@ -84,12 +84,12 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
      * @param company
      * @return
      */
-    @JooqEsQuery
+    @JooqEsQuery(backColumn = "personNo",backColumnType = String.class)
     @Override
     public List<PersonEntity> findByPersonLike(String personName, String company) {
         return context.select().from(PERSON).where(
                 PERSON.PERSON_NAME.like(personName)
-                        .and(PERSON.COMPANY.like(company))
+                        .or(PERSON.COMPANY.like(company))
         ).fetchInto(PersonEntity.class);
     }
 
