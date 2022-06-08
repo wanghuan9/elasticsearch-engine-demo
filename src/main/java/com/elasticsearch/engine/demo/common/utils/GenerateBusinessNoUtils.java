@@ -3,6 +3,7 @@ package com.elasticsearch.engine.demo.common.utils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 
 /**
@@ -14,8 +15,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 public class GenerateBusinessNoUtils {
 
-    private static AtomicInteger count = new AtomicInteger();
-    
+    private static AtomicInteger atomicBusinessNo = new AtomicInteger();
+
+    private static AtomicLong atomicId = new AtomicLong();
+
     /**
      * 生成仓库编码
      *
@@ -32,9 +35,17 @@ public class GenerateBusinessNoUtils {
      */
     public static String generateBusinessNo() {
         String key = "US" + 20220601;
-        long num = count.incrementAndGet();
+        long num = atomicBusinessNo.incrementAndGet();
         String str = String.format("%05d", num);
         return key + str;
     }
 
+    /**
+     * 生成自增业务单号
+     *
+     * @return
+     */
+    public static long generateId() {
+        return atomicId.incrementAndGet();
+    }
 }

@@ -58,4 +58,12 @@
             #{item}
         </foreach>GROUP BY company HAVING sumSalary>450000
     </select>
+
+    <select id="findByStatus" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT * FROM person WHERE  status = #{status}
+    </select>
+    
+    <select id="findBySex" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT * FROM person WHERE  sex = #{sex}
+    </select>
 </mapper>

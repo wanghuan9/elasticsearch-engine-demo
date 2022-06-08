@@ -48,11 +48,11 @@ public class EsEngineExtendMybatisQueryTest {
     }
 
     /**
-     *  list 查询
+     * list 查询
      */
     @Test
     public void testSqlList() {
-        List<PersonEsEntity> supplierItemEntities = personMapper.queryList(Lists.newArrayList("US2022060100001","US2022060100002"));
+        List<PersonEsEntity> supplierItemEntities = personMapper.queryList(Lists.newArrayList("US2022060100001", "US2022060100002"));
         System.out.println(JsonParser.asJson(supplierItemEntities));
     }
 
@@ -79,7 +79,7 @@ public class EsEngineExtendMybatisQueryTest {
      */
     @Test
     public void testSqlLike() {
-        List<PersonEsEntity> res = personMapper.likePersonName("狗",2);
+        List<PersonEsEntity> res = personMapper.likePersonName("狗", 2);
         System.out.println(JsonParser.asJson(res));
     }
 
@@ -88,7 +88,7 @@ public class EsEngineExtendMybatisQueryTest {
      */
     @Test
     public void testSqlGroup() {
-        List<PersonEsEntity> res = personMapper.groupBy("狗",2);
+        List<PersonEsEntity> res = personMapper.groupBy("狗", 2);
         System.out.println(JsonParser.asJson(res));
     }
 
@@ -119,5 +119,26 @@ public class EsEngineExtendMybatisQueryTest {
         System.out.println(JsonParser.asJson(results));
     }
 
-  
+
+    //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 关联查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
+
+    //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 回表查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
+
+    /**
+     * 回表查询测试 personNo
+     */
+    @Test
+    public void testSqlBackByPersonNo() {
+        List<PersonEsEntity> results = personMapper.findByStatus(4);
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    /**
+     * 回表查询测试 id
+     */
+    @Test
+    public void testSqlBackById() {
+        List<PersonEsEntity> results = personMapper.findBySex(1);
+        System.out.println(JsonParser.asJson(results));
+    }
 }

@@ -109,4 +109,9 @@ public class EsEngineExtendJooqQueryTest {
         List<PersonGroupResult> results = personJooqDao.havingQuery(Lists.newArrayList("蚂蚁", "米哈游", "美团", "字节跳动"), 450000);
         System.out.println(JsonParser.asJson(results));
     }
+
+    //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 关联查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
+
+    //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 回表查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
+
 }

@@ -34,7 +34,7 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
     @Query(value = "SELECT * FROM person t WHERE t.person_name LIKE CONCAT('%',:personName,'%') OR t.company LIKE CONCAT('%',:company,'%') ", nativeQuery = true)
     List<PersonEntity> findByPersonLike(String personName, String company);
 
-//    @JpaEsQuery
+    @JpaEsQuery
     @Query(value = "SELECT * FROM person WHERE person_name LIKE CONCAT('%',:personName,'%') GROUP BY status", nativeQuery = true)
     List<PersonEntity> groupBy(String personName);
 

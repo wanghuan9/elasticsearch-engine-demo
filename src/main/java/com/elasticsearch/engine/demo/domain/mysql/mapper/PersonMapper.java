@@ -24,7 +24,7 @@ public interface PersonMapper {
 
     int insertList(@Param("persons") List<PersonEntity> persons);
 
-    @EsQuery(backColumn = "personNo",backColumnType = String.class)
+    @EsQuery
     PersonEsEntity queryOne(@Param("personNo") String personNo, @Param("status") Integer status);
 
     @EsQuery
@@ -50,4 +50,12 @@ public interface PersonMapper {
 
     @EsQuery
     List<PersonGroupResult> having(@Param("company") List<String> company, @Param("status") Integer status);
+
+    @EsQuery(backColumn = "personNo",backColumnType = String.class)
+    List<PersonEsEntity> findByStatus(@Param("status") Integer status);
+
+    @EsQuery(backColumn = "id",backColumnType = Long.class)
+    List<PersonEsEntity> findBySex(@Param("sex") Integer sex);
+
+
 }

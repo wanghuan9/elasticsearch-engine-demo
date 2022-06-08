@@ -4,7 +4,7 @@ import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author wanghuan
@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Data
 @EsQueryIndex("person_es_index")
 public class PersonEsEntity  {
+    private Long id;
     private String personNo;
     private String personName;
     private Long phone;
@@ -23,7 +24,7 @@ public class PersonEsEntity  {
     private Integer status;
     private Integer sex;
     private String address;
-    private LocalDateTime createTime;
+    private Date createTime;
     private String createUser;
     private String mail;
     private String hobby;
