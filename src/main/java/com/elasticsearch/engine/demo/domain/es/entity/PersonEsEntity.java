@@ -4,7 +4,7 @@ import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * @author wanghuan
@@ -24,7 +24,7 @@ public class PersonEsEntity  {
     private Integer status;
     private Integer sex;
     private String address;
-    private Date createTime;
+    private LocalDateTime createTime;
     private String createUser;
     private String mail;
     private String hobby;

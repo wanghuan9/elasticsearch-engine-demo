@@ -66,4 +66,8 @@
     <select id="findBySex" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
         SELECT * FROM person WHERE  sex = #{sex}
     </select>
+    
+    <select id="pageQuery" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT * FROM person WHERE status = #{status} and sex = #{sex}
+    </select>
 </mapper>

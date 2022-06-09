@@ -171,4 +171,17 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
                 PERSON.SEX.eq(sex.byteValue())
         ).fetchInto(PersonEntity.class);
     }
+
+    /**
+     * 对象参数查询 测试
+     * @param person 
+     * @return
+     */
+    @JooqEsQuery
+    @Override
+    public List<PersonEntity> pageQuery(PersonEntity person) {
+        return context.select().from(PERSON).where(
+                PERSON.STATUS.eq(person.getStatus().byteValue()).and( PERSON.SEX.eq(person.getSex().byteValue()))
+        ).fetchInto(PersonEntity.class);
+    }
 }

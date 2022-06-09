@@ -3,6 +3,7 @@ package com.elasticsearch.engine.demo.extend;
 
 import com.elasticsearch.engine.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
+import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.domain.mysql.mapper.PersonExtendMapper;
 import com.elasticsearch.engine.demo.domain.mysql.mapper.PersonMapper;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
@@ -119,6 +120,19 @@ public class EsEngineExtendMybatisQueryTest {
         System.out.println(JsonParser.asJson(results));
     }
 
+    /**
+     * 对象参数查询 测试
+     */
+    @Test
+    public void testSqlPageQuery() {
+        PersonEntity person = new PersonEntity();
+        person.setStatus(1);
+        person.setSex(1);
+        List<PersonEsEntity> results = personMapper.pageQuery(person);
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    
 
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 关联查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
 

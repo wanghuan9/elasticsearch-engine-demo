@@ -23,8 +23,8 @@ import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -113,7 +113,7 @@ public class PersonTestDataInitService {
             PersonEsEntity personEsEntity = new PersonEsEntity();
             BeanUtils.copyProperties(personEntity, personEsEntity);
             BeanUtils.copyProperties(personExtendEntity, personEsEntity);
-            personEsEntity.setCreateTime(new Date(System.currentTimeMillis()));
+            personEsEntity.setCreateTime(LocalDateTime.now());
             list.add(personEsEntity);
         }
         bulkAddEsDocument(list, indexName);

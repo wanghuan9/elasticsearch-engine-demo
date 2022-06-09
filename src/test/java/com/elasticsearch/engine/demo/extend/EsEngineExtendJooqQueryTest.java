@@ -110,6 +110,19 @@ public class EsEngineExtendJooqQueryTest {
         System.out.println(JsonParser.asJson(results));
     }
 
+    /**
+     * 对象参数查询 测试
+     */
+    @Test
+    public void testSqlPageQuery() {
+        PersonEntity person = new PersonEntity();
+        person.setStatus(1);
+        person.setSex(1);
+        List<PersonEntity> results = personJooqDao.pageQuery(person);
+        System.out.println(JsonParser.asJson(results));
+    }
+
+
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 关联查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
 
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 回表查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//

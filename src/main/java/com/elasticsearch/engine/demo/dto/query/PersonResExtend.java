@@ -6,7 +6,7 @@ import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import com.elasticsearch.engine.model.annotion.Ignore;
 import com.elasticsearch.engine.model.constant.EsConstant;
 import com.elasticsearch.engine.model.domain.DefaultAggResp;
-import com.elasticsearch.engine.model.exception.EsHelperQueryException;
+import com.elasticsearch.engine.model.exception.EsEngineQueryException;
 import com.google.common.collect.Lists;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +46,7 @@ public class PersonResExtend implements ResponseHook<List<DefaultAggResp>> {
     public List<DefaultAggResp> handleResponse(SearchResponse resp) {
         List<DefaultAggResp> rr = Lists.newArrayList();
         if (Objects.isNull(resp.getAggregations())) {
-            throw new EsHelperQueryException("aggs param is null, result aggs is null");
+            throw new EsEngineQueryException("aggs param is null, result aggs is null");
         }
         Terms aggs = resp.getAggregations().get(EsConstant.AGG);
         for (Terms.Bucket agg : aggs.getBuckets()) {

@@ -34,4 +34,6 @@ public interface PersonJooqDao{
     List<PersonEntity> findByStatus(Integer status);
 
     List<PersonEntity> findBySex(Integer sex);
+
+    List<PersonEntity> pageQuery(PersonEntity person);
 }
