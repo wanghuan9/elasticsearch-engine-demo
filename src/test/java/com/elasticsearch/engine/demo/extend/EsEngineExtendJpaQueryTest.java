@@ -123,5 +123,22 @@ public class EsEngineExtendJpaQueryTest {
 
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 回表查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
 
+    /**
+     * 回表查询测试 personNo
+     */
+    @Test
+    public void testSqlBackByPersonNo() {
+        List<PersonEntity> results = personRepository.findByStatus(4);
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    /**
+     * 回表查询测试 id
+     */
+    @Test
+    public void testSqlBackById() {
+        List<PersonEntity> results = personRepository.findBySex(1);
+        System.out.println(JsonParser.asJson(results));
+    }
 
 }

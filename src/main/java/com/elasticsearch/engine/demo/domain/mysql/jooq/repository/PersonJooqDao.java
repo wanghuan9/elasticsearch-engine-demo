@@ -31,4 +31,7 @@ public interface PersonJooqDao{
 
     List<PersonGroupResult> havingQuery(List<String> company, Integer gtSalary);
 
+    List<PersonEntity> findByStatus(Integer status);
+
+    List<PersonEntity> findBySex(Integer sex);
 }

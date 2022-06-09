@@ -7,6 +7,7 @@ import com.elasticsearch.engine.demo.domain.mysql.jooq.repository.PersonJooqDao;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import com.elasticsearch.engine.model.annotion.JooqEsQuery;
+import com.elasticsearch.engine.model.annotion.JpaEsQuery;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
      * @param status
      * @return
      */
-    @JooqEsQuery(backColumn = "personNo",backColumnType = String.class)
+    @JooqEsQuery
     @Override
     public PersonEntity getByPersonNoAndStatus(String personNo, Integer status) {
         return context.select().from(PERSON).where(
@@ -84,7 +85,7 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
      * @param company
      * @return
      */
-    @JooqEsQuery(backColumn = "personNo",backColumnType = String.class)
+    @JooqEsQuery(backColumn = "personNo", backColumnType = String.class)
     @Override
     public List<PersonEntity> findByPersonLike(String personName, String company) {
         return context.select().from(PERSON).where(
@@ -146,5 +147,29 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
                 .groupBy(PERSON.COMPANY)
                 .having(DSL.sum(PERSON.SALARY).gt(new BigDecimal(gtSalary)))
                 .fetchInto(PersonGroupResult.class);
+    }
+
+    /**
+     * @param status
+     * @return
+     */
+    @JpaEsQuery(backColumn = "personNo", backColumnType = String.class)
+    @Override
+    public List<PersonEntity> findByStatus(Integer status) {
+        return context.select().from(PERSON).where(
+                PERSON.STATUS.eq(status.byteValue())
+        ).fetchInto(PersonEntity.class);
+    }
+
+    /**
+     * @param sex
+     * @return
+     */
+    @JooqEsQuery(backColumn = "id", backColumnType = Long.class)
+    @Override
+    public List<PersonEntity> findBySex(Integer sex) {
+        return context.select().from(PERSON).where(
+                PERSON.SEX.eq(sex.byteValue())
+        ).fetchInto(PersonEntity.class);
     }
 }

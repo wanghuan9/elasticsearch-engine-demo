@@ -18,7 +18,7 @@ import java.util.List;
 @EsQueryIndex("person_es_index")
 public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
 
-    @JpaEsQuery(backColumn = "personNo",backColumnType = String.class)
+    @JpaEsQuery
     PersonEntity getByPersonNoAndStatus(String personNo, Integer status);
 
     @JpaEsQuery
@@ -50,4 +50,9 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
     @Query(value = "SELECT company,SUM(salary) AS sumSalary FROM person WHERE company IN (?1)  GROUP BY company HAVING sumSalary>450000", nativeQuery = true)
     List<PersonGroupResult> havingQuery(List<String> company, Integer status);
 
+    @JpaEsQuery(backColumn = "personNo",backColumnType = String.class)
+    List<PersonEntity> findByStatus(Integer status);
+
+    @JpaEsQuery(backColumn = "id",backColumnType = Long.class)
+    List<PersonEntity> findBySex(Integer sex);
 }

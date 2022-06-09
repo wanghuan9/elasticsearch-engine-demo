@@ -34,7 +34,7 @@ public class EsEngineExtendJooqQueryTest {
      */
     @Test
     public void testSqlOne() {
-        PersonEntity personEntity = personJooqDao.getByPersonNoAndStatus("US2022060100001", 1);
+        PersonEntity personEntity = personJooqDao.getByPersonNoAndStatus("US2022060100001", 4);
         log.info("res:{}", JsonParser.asJson(personEntity));
     }
 
@@ -113,5 +113,23 @@ public class EsEngineExtendJooqQueryTest {
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 关联查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
 
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 回表查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
+
+    /**
+     * 回表查询测试 personNo
+     */
+    @Test
+    public void testSqlBackByPersonNo() {
+        List<PersonEntity> results = personJooqDao.findByStatus(4);
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    /**
+     * 回表查询测试 id
+     */
+    @Test
+    public void testSqlBackById() {
+        List<PersonEntity> results = personJooqDao.findBySex(1);
+        System.out.println(JsonParser.asJson(results));
+    }
 
 }
