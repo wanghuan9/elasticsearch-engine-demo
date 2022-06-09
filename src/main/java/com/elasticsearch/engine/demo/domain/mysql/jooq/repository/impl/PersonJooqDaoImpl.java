@@ -36,10 +36,10 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
      * @param status
      * @return
      */
-    @JooqEsQuery
+//    @JooqEsQuery
     @Override
     public PersonEntity getByPersonNoAndStatus(String personNo, Integer status) {
-        return context.select().from(PERSON).where(
+        return context.selectFrom(PERSON).where(
                 PERSON.PERSON_NO.eq(personNo).and(PERSON.STATUS.eq(status.byteValue()))
         ).fetchOneInto(PersonEntity.class);
     }
@@ -60,7 +60,7 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
      * @param createTime
      * @return
      */
-    @JooqEsQuery
+//    @JooqEsQuery
     @Override
     public List<PersonEntity> findByCreateTime(LocalDateTime createTime) {
         return context.select().from(PERSON).where(
@@ -85,7 +85,6 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
      * @param company
      * @return
      */
-    @JooqEsQuery(backColumn = "personNo", backColumnType = String.class)
     @Override
     public List<PersonEntity> findByPersonLike(String personName, String company) {
         return context.select().from(PERSON).where(
