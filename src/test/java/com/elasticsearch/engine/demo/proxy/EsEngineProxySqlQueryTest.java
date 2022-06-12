@@ -5,6 +5,7 @@ import com.elasticsearch.engine.common.queryhandler.sql.EsSqlExecuteHandler;
 import com.elasticsearch.engine.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.es.repository.PersonEsSqlRepository;
+import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
 import com.elasticsearch.engine.model.emenu.SqlFormat;
 import com.google.common.collect.Lists;
@@ -117,6 +118,18 @@ public class EsEngineProxySqlQueryTest {
     @Test
     public void testSqlHaving() {
         List<PersonGroupResult> results = personEsSqlRepository.having(Lists.newArrayList("蚂蚁", "米哈游", "美团", "字节跳动"), 4);
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    /**
+     * 对象参数查询 测试
+     */
+    @Test
+    public void testSqlPageQuery() {
+        PersonEntity person = new PersonEntity();
+        person.setStatus(1);
+        person.setSex(1);
+        List<PersonEntity> results = personEsSqlRepository.pageQuery(person);
         System.out.println(JsonParser.asJson(results));
     }
 

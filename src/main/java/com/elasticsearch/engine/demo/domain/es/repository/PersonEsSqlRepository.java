@@ -1,6 +1,7 @@
 package com.elasticsearch.engine.demo.domain.es.repository;
 
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
+import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
 import com.elasticsearch.engine.model.annotion.EsQuery;
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
@@ -102,4 +103,11 @@ public interface PersonEsSqlRepository extends BaseESRepository<PersonEsEntity, 
     @EsQuery("SELECT company,SUM(salary) AS sumSalary FROM person_es_index WHERE company IN (#{company})  GROUP BY company HAVING sumSalary>450000")
     List<PersonGroupResult> having(List<String> company, Integer status);
 
+    /**
+     * 对象参数测试
+     * @param person
+     * @return
+     */
+    @EsQuery("SELECT * FROM person_es_index WHERE status = #{person.status}  AND sex = #{person.sex}")
+    List<PersonEntity> pageQuery(PersonEntity person);
 }
