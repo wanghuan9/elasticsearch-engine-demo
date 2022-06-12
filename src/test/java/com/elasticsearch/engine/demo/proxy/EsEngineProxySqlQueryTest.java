@@ -128,7 +128,7 @@ public class EsEngineProxySqlQueryTest {
     public void testSqlPageQuery() {
         PersonEntity person = new PersonEntity();
         person.setStatus(1);
-        person.setSex(1);
+//        person.setSex(1);
         List<PersonEntity> results = personEsSqlRepository.pageQuery(person);
         System.out.println(JsonParser.asJson(results));
     }

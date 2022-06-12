@@ -127,7 +127,7 @@ public class EsEngineExtendMybatisQueryTest {
     public void testSqlPageQuery() {
         PersonEntity person = new PersonEntity();
         person.setStatus(1);
-        person.setSex(1);
+//        person.setSex(1);
         List<PersonEsEntity> results = personMapper.pageQuery(person);
         System.out.println(JsonParser.asJson(results));
     }

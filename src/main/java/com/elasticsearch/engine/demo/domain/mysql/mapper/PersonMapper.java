@@ -51,6 +51,7 @@ public interface PersonMapper {
     @EsQuery
     List<PersonGroupResult> having(@Param("company") List<String> company, @Param("status") Integer status);
 
+    @EsQuery
     List<PersonEsEntity> pageQuery(PersonEntity person);
 
     @EsQuery(backColumn = "personNo",backColumnType = String.class)
