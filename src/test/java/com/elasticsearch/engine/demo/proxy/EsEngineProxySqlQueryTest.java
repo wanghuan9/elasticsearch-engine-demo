@@ -133,6 +133,9 @@ public class EsEngineProxySqlQueryTest {
         System.out.println(JsonParser.asJson(results));
     }
 
+    /**
+     * 查看默认size效果
+     */
     @Test
     public void testSql() {
         //常规

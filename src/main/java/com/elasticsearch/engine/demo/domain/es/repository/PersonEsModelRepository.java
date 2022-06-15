@@ -4,6 +4,9 @@ import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.dto.query.PersonSearchResponseRes;
+import com.elasticsearch.engine.mapping.annotation.method.Include;
+import com.elasticsearch.engine.mapping.annotation.method.Order;
+import com.elasticsearch.engine.mapping.annotation.method.Size;
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import com.elasticsearch.engine.model.domain.BaseESRepository;
 import com.elasticsearch.engine.model.domain.BaseResp;
@@ -74,5 +77,17 @@ public interface PersonEsModelRepository extends BaseESRepository<PersonEsEntity
      * @return
      */
     SearchResponse querySearchResponse(PersonSearchResponseRes param);
+
+    /**
+     * method查询注解测试
+     *
+     * @param param
+     * @return
+     */
+    @Order("salary")
+    @Size(100)
+    @Include({"personName"})
+    PersonEsEntity queryByDto(PersonBaseQuery param);
+
 
 }

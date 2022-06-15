@@ -119,4 +119,16 @@ public class EsEngineProxyModelQueryTest {
         log.info("res:{}", JsonParser.asJson(searchResponse));
     }
 
+    /**
+     * method查询注解测试
+     */
+    @Test
+    public void queryByDto() {
+        PersonBaseQuery person = new PersonBaseQuery();
+        List<String> itemNoList = Lists.newArrayList("US2022060100001");
+        person.setPersonNoList(itemNoList);
+        PersonEsEntity personEsEntity = personEsModelRepository.queryByDto(person);
+        log.info("res:{}", JsonParser.asJson(personEsEntity));
+    }
+
 }

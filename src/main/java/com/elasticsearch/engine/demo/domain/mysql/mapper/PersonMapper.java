@@ -3,8 +3,8 @@ package com.elasticsearch.engine.demo.domain.mysql.mapper;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
-import com.elasticsearch.engine.model.annotion.EsQuery;
 import com.elasticsearch.engine.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.model.annotion.MybatisEsQuery;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -24,40 +24,40 @@ public interface PersonMapper {
 
     int insertList(@Param("persons") List<PersonEntity> persons);
 
-    @EsQuery
+    @MybatisEsQuery
     PersonEsEntity queryOne(@Param("personNo") String personNo, @Param("status") Integer status);
 
-    @EsQuery
+    @MybatisEsQuery
     List<PersonEsEntity> queryList(List<String> personNoList);
 
-    @EsQuery
+    @MybatisEsQuery
     PersonEsEntity queryByCreateDt(LocalDateTime createTime);
 
-    @EsQuery
+    @MybatisEsQuery
     Long count();
 
-    @EsQuery
+    @MybatisEsQuery
     List<PersonEsEntity> likePersonName(@Param("personName") String personName, @Param("status") Integer status);
 
-    @EsQuery
+    @MybatisEsQuery
     List<PersonEsEntity> groupBy(@Param("personName") String personName, @Param("status") Integer status);
 
-    @EsQuery
+    @MybatisEsQuery
     BigDecimal sum(String company);
 
-    @EsQuery
+    @MybatisEsQuery
     List<PersonGroupResult> sumGroup(@Param("company") List<String> company, @Param("status") Integer status);
 
-    @EsQuery
+    @MybatisEsQuery
     List<PersonGroupResult> having(@Param("company") List<String> company, @Param("status") Integer status);
 
-    @EsQuery
+    @MybatisEsQuery
     List<PersonEsEntity> pageQuery(PersonEntity person);
 
-    @EsQuery(backColumn = "personNo",backColumnType = String.class)
+    @MybatisEsQuery(backColumn = "personNo",backColumnType = String.class)
     List<PersonEsEntity> findByStatus(@Param("status") Integer status);
 
-    @EsQuery(backColumn = "id",backColumnType = Long.class)
+    @MybatisEsQuery(backColumn = "id",backColumnType = Long.class)
     List<PersonEsEntity> findBySex(@Param("sex") Integer sex);
 
 
