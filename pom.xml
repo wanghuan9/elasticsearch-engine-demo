@@ -32,7 +32,7 @@
         <dependency>
             <groupId>com.elasticsearch.engine</groupId>
             <artifactId>elasticsearch-engine</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.22-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,12 +78,6 @@
             <version>${google.guava.version}</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.elasticsearch.client</groupId>-->
-<!--            <artifactId>elasticsearch-rest-high-level-client</artifactId>-->
-<!--            <version>${elasticsearch.client.version}</version>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
         <!--mybatis起步依赖-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

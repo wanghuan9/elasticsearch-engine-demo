@@ -18,7 +18,7 @@ PUT /person_es_index
     }
   },
   "mappings": {
-    "supply_product": {
+    "person_es_index": {
       "dynamic": "strict",
       "properties": {
         "id": {

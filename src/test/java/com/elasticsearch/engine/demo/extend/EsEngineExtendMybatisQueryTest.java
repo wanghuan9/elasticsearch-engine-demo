@@ -62,7 +62,7 @@ public class EsEngineExtendMybatisQueryTest {
      */
     @Test
     public void testSqlTime() {
-        PersonEsEntity supplierItemEntity = personMapper.queryByCreateDt(LocalDateTime.now().minusDays(300));
+        List<PersonEsEntity> supplierItemEntity = personMapper.queryByCreateDt(LocalDateTime.now().minusDays(300));
         System.out.println(JsonParser.asJson(supplierItemEntity));
     }
 

@@ -31,7 +31,7 @@ public interface PersonMapper {
     List<PersonEsEntity> queryList(List<String> personNoList);
 
     @MybatisEsQuery
-    PersonEsEntity queryByCreateDt(LocalDateTime createTime);
+    List<PersonEsEntity> queryByCreateDt(LocalDateTime createTime);
 
     @MybatisEsQuery
     Long count();

@@ -1,6 +1,7 @@
 package com.elasticsearch.engine.demo.service;
 
 import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.config.EsEngineConfig;
 import com.elasticsearch.engine.demo.common.utils.GenerateBusinessNoUtils;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
@@ -66,8 +67,8 @@ public class PersonTestDataInitService {
                 Thread.sleep(10);
             }
             writeDataToES(persons, personExtends, indexName);
-            personMapper.insertList(persons);
-            personExtendMapper.insertList(personExtends);
+//            personMapper.insertList(persons);
+//            personExtendMapper.insertList(personExtends);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
@@ -124,7 +125,16 @@ public class PersonTestDataInitService {
         //创建批量新增文档请求
         BulkRequest bulkRequest = new BulkRequest();
         for (PersonEsEntity person : data) {
-            bulkRequest.add(new IndexRequest(indexName, "_doc").opType(DocWriteRequest.OpType.CREATE).id(person.getPersonNo()).source(JsonParser.asJson(person), XContentType.JSON));
+            String personJson;
+            if (EsEngineConfig.isNamingStrategy()) {
+                personJson = JsonParser.asJsonSnakeCase(person);
+            } else {
+                personJson = JsonParser.asJson(person);
+            }
+            bulkRequest.add(new IndexRequest(indexName, "_doc")
+                    .opType(DocWriteRequest.OpType.CREATE)
+                    .id(person.getPersonNo())
+                    .source(personJson, XContentType.JSON));
         }
         bulkRequest.setRefreshPolicy(WriteRequest.RefreshPolicy.WAIT_UNTIL);
         //发送批量新新增请求
