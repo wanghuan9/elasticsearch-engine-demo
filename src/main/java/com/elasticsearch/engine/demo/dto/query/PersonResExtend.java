@@ -1,12 +1,12 @@
 package com.elasticsearch.engine.demo.dto.query;
 
-import com.elasticsearch.engine.hook.ResponseHook;
-import com.elasticsearch.engine.mapping.annotation.Aggs;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.annotion.Ignore;
-import com.elasticsearch.engine.model.constant.EsConstant;
-import com.elasticsearch.engine.model.domain.DefaultAggResp;
-import com.elasticsearch.engine.model.exception.EsEngineQueryException;
+import com.elasticsearch.engine.base.hook.ResponseHook;
+import com.elasticsearch.engine.base.mapping.annotation.Aggs;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.model.annotion.Ignore;
+import com.elasticsearch.engine.base.model.constant.EsConstant;
+import com.elasticsearch.engine.base.model.domain.DefaultAggResp;
+import com.elasticsearch.engine.base.model.exception.EsEngineQueryException;
 import com.google.common.collect.Lists;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;

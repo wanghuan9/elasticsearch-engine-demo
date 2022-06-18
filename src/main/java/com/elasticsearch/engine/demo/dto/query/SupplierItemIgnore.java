@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo.dto.query;
 
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.annotion.Ignore;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.model.annotion.Ignore;
 import lombok.Data;
 
 import java.util.List;

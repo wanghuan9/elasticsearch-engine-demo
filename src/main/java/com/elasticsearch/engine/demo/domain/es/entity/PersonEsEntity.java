@@ -1,6 +1,6 @@
 package com.elasticsearch.engine.demo.domain.es.entity;
 
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
 import lombok.Data;
 
 import java.math.BigDecimal;

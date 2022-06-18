@@ -1,9 +1,9 @@
 package com.elasticsearch.engine.demo.dto.query;
 
-import com.elasticsearch.engine.holder.AbstractEsRequestHolder;
-import com.elasticsearch.engine.hook.RequestHook;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.annotion.Ignore;
+import com.elasticsearch.engine.base.holder.AbstractEsRequestHolder;
+import com.elasticsearch.engine.base.hook.RequestHook;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.model.annotion.Ignore;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.QueryBuilders;

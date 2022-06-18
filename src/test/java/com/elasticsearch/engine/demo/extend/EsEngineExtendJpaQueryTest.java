@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo.extend;
 
 
-import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.domain.mysql.repository.PersonExtendRepository;
 import com.elasticsearch.engine.demo.domain.mysql.repository.PersonRepository;

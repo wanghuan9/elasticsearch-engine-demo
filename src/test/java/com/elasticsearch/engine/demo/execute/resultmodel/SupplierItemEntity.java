@@ -1,6 +1,6 @@
 package com.elasticsearch.engine.demo.execute.resultmodel;
 
-import com.elasticsearch.engine.model.domain.BaseHit;
+import com.elasticsearch.engine.base.model.domain.BaseHit;
 import lombok.Data;
 
 import java.math.BigDecimal;

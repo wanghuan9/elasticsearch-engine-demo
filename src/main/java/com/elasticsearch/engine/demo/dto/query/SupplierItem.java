@@ -1,11 +1,11 @@
 package com.elasticsearch.engine.demo.dto.query;
 
-import com.elasticsearch.engine.mapping.annotation.*;
-import com.elasticsearch.engine.mapping.model.extend.PageParam;
-import com.elasticsearch.engine.mapping.model.extend.RangeParam;
-import com.elasticsearch.engine.model.annotion.Base;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.emenu.EsConnector;
+import com.elasticsearch.engine.base.mapping.annotation.*;
+import com.elasticsearch.engine.base.mapping.model.extend.PageParam;
+import com.elasticsearch.engine.base.mapping.model.extend.RangeParam;
+import com.elasticsearch.engine.base.model.annotion.Base;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.model.emenu.EsConnector;
 import lombok.Data;
 
 import java.math.BigDecimal;

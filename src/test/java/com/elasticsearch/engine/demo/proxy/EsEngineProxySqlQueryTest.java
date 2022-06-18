@@ -1,13 +1,13 @@
 package com.elasticsearch.engine.demo.proxy;
 
 
-import com.elasticsearch.engine.common.queryhandler.sql.EsSqlExecuteHandler;
-import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.base.common.queryhandler.sql.EsSqlExecuteHandler;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
+import com.elasticsearch.engine.base.model.emenu.SqlFormat;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.es.repository.PersonEsSqlRepository;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
-import com.elasticsearch.engine.model.emenu.SqlFormat;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

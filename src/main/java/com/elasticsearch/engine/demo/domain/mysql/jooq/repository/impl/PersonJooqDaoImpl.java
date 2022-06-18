@@ -1,13 +1,13 @@
 package com.elasticsearch.engine.demo.domain.mysql.jooq.repository.impl;
 
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.domain.mysql.jooq.generator.Tables;
 import com.elasticsearch.engine.demo.domain.mysql.jooq.generator.tables.Person;
 import com.elasticsearch.engine.demo.domain.mysql.jooq.repository.PersonJooqDao;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.annotion.JooqEsQuery;
-import com.elasticsearch.engine.model.annotion.JpaEsQuery;
+import com.elasticsearch.engine.jooq.annotion.JooqEsQuery;
+import com.elasticsearch.engine.jpa.annotion.JpaEsQuery;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;

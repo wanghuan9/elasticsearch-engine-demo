@@ -1,9 +1,9 @@
 package com.elasticsearch.engine.demo.error.repository;
 
+import com.elasticsearch.engine.base.mapping.annotation.Collapse;
+import com.elasticsearch.engine.base.mapping.annotation.Term;
+import com.elasticsearch.engine.base.model.domain.BaseESRepository;
 import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
-import com.elasticsearch.engine.mapping.annotation.Collapse;
-import com.elasticsearch.engine.mapping.annotation.Term;
-import com.elasticsearch.engine.model.domain.BaseESRepository;
 
 /**
  * 异常场景测试  未添加EsQueryIndex

@@ -1,9 +1,9 @@
 package com.elasticsearch.engine.demo.dto.query;
 
-import com.elasticsearch.engine.mapping.annotation.Sort;
-import com.elasticsearch.engine.mapping.model.extend.SignParam;
-import com.elasticsearch.engine.model.annotion.Base;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.mapping.annotation.Sort;
+import com.elasticsearch.engine.base.mapping.model.extend.SignParam;
+import com.elasticsearch.engine.base.model.annotion.Base;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
 import lombok.Data;
 import org.elasticsearch.search.sort.SortOrder;
 

@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo.service;
 
-import com.elasticsearch.engine.common.utils.JsonParser;
-import com.elasticsearch.engine.config.EsEngineConfig;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
+import com.elasticsearch.engine.base.config.EsEngineConfig;
 import com.elasticsearch.engine.demo.common.utils.GenerateBusinessNoUtils;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;

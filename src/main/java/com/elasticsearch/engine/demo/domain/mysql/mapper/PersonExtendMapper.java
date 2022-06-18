@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo.domain.mysql.mapper;
 
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonExtendEntity;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

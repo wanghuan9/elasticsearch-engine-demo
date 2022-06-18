@@ -1,15 +1,15 @@
 package com.elasticsearch.engine.demo.proxy;
 
-import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
+import com.elasticsearch.engine.base.mapping.model.extend.SignParam;
+import com.elasticsearch.engine.base.model.annotion.Sign;
+import com.elasticsearch.engine.base.model.domain.BaseResp;
+import com.elasticsearch.engine.base.model.domain.DefaultAggResp;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.es.repository.PersonEsModelRepository;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.dto.query.PersonSearchResponseRes;
-import com.elasticsearch.engine.mapping.model.extend.SignParam;
-import com.elasticsearch.engine.model.annotion.Sign;
-import com.elasticsearch.engine.model.domain.BaseResp;
-import com.elasticsearch.engine.model.domain.DefaultAggResp;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.search.SearchResponse;

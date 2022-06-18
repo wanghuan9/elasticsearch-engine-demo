@@ -1,11 +1,11 @@
 package com.elasticsearch.engine.demo.domain.es.repository;
 
+import com.elasticsearch.engine.base.model.annotion.EsQuery;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.model.domain.BaseESRepository;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
-import com.elasticsearch.engine.model.annotion.EsQuery;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.domain.BaseESRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

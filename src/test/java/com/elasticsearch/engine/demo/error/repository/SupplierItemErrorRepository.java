@@ -1,8 +1,8 @@
 package com.elasticsearch.engine.demo.error.repository;
 
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
 import com.elasticsearch.engine.demo.dto.query.SupplierItem;
 import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
 
 /**
  * 异常场景测试  未继承BaseESRepository

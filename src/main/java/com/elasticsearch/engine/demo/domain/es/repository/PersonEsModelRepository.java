@@ -1,16 +1,16 @@
 package com.elasticsearch.engine.demo.domain.es.repository;
 
+import com.elasticsearch.engine.base.mapping.annotation.method.Include;
+import com.elasticsearch.engine.base.mapping.annotation.method.Order;
+import com.elasticsearch.engine.base.mapping.annotation.method.Size;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.model.domain.BaseESRepository;
+import com.elasticsearch.engine.base.model.domain.BaseResp;
+import com.elasticsearch.engine.base.model.domain.DefaultAggResp;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.dto.query.PersonSearchResponseRes;
-import com.elasticsearch.engine.mapping.annotation.method.Include;
-import com.elasticsearch.engine.mapping.annotation.method.Order;
-import com.elasticsearch.engine.mapping.annotation.method.Size;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.domain.BaseESRepository;
-import com.elasticsearch.engine.model.domain.BaseResp;
-import com.elasticsearch.engine.model.domain.DefaultAggResp;
 import org.elasticsearch.action.search.SearchResponse;
 
 import java.util.List;

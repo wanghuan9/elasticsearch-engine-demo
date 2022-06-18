@@ -1,9 +1,9 @@
 package com.elasticsearch.engine.demo.domain.es.repository;
 
+import com.elasticsearch.engine.base.mapping.annotation.*;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.model.domain.BaseESRepository;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
-import com.elasticsearch.engine.mapping.annotation.*;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.domain.BaseESRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -45,7 +45,7 @@ public interface PersonEsParamRepository extends BaseESRepository<PersonEsEntity
      *
      * @return
      */
-    List<PersonEsEntity> queryBycreateTime(@From LocalDateTime createTimeStart,@To LocalDateTime createTimeEnd);
+    List<PersonEsEntity> queryBycreateTime(@From LocalDateTime createTimeStart, @To LocalDateTime createTimeEnd);
 
 
 }
