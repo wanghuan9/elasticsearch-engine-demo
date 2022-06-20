@@ -2,7 +2,7 @@ package com.elasticsearch.engine.demo.domain.es.repository;
 
 import com.elasticsearch.engine.base.mapping.annotation.*;
 import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.base.model.domain.BaseESRepository;
+import com.elasticsearch.engine.base.model.domain.BaseEsRepository;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 
 import java.time.LocalDateTime;
@@ -23,7 +23,7 @@ import java.util.List;
 //@EsQueryIndex(index = "person_es_index")
 //@EsQueryIndex(index = "${es.person.index.name}")
 @EsQueryIndex(value = "${es.person.index.name:person_es_index}")
-public interface PersonEsParamRepository extends BaseESRepository<PersonEsEntity, Long> {
+public interface PersonEsParamRepository extends BaseEsRepository<PersonEsEntity, Long> {
 
     /**
      * 查询单个

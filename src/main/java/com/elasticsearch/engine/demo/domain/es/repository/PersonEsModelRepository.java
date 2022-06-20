@@ -4,7 +4,7 @@ import com.elasticsearch.engine.base.mapping.annotation.method.Include;
 import com.elasticsearch.engine.base.mapping.annotation.method.Order;
 import com.elasticsearch.engine.base.mapping.annotation.method.Size;
 import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.base.model.domain.BaseESRepository;
+import com.elasticsearch.engine.base.model.domain.BaseEsRepository;
 import com.elasticsearch.engine.base.model.domain.BaseResp;
 import com.elasticsearch.engine.base.model.domain.DefaultAggResp;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
@@ -28,7 +28,7 @@ import java.util.List;
  * @date 2022/6/2 13:19
  */
 @EsQueryIndex("person_es_index")
-public interface PersonEsModelRepository extends BaseESRepository<PersonEsEntity, Long> {
+public interface PersonEsModelRepository extends BaseEsRepository<PersonEsEntity, Long> {
 
     /**
      * 查询单个
@@ -54,6 +54,14 @@ public interface PersonEsModelRepository extends BaseESRepository<PersonEsEntity
      * @return
      */
     BaseResp<PersonEsEntity> queryListBaseResp(PersonBaseQuery param);
+
+    /**
+     * queryByMode
+     *
+     * @param param
+     * @return
+     */
+    List<PersonEsEntity> queryByMode(PersonBaseQuery param);
 
     /**
      * 固定结果值查询

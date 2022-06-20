@@ -24,14 +24,14 @@ import java.util.List;
 @Data
 public class PersonBaseQuery {
 
+    @Term
+    private BigDecimal salary;
+
     @Terms(value = @Base("item_no"))
     private List<String> personNos;
 
     @Terms
     private List<String> personNoList;
-
-    @Term
-    private BigDecimal salary;
 
     @Range(value = @Base(value = "status", connect = EsConnector.SHOULD), tag = Range.LE_GE)
     private RangeParam rangeStatus;
@@ -63,7 +63,7 @@ public class PersonBaseQuery {
      * 也可以使用 Sign.DEFAULT_STRING 表示
      */
     @Sort
-    private SignParam status;
+    private SignParam sortStatus;
     
     @Aggs(value = @Base("status"), type = Aggs.COUNT_DESC)
     private SignParam groupStatus;

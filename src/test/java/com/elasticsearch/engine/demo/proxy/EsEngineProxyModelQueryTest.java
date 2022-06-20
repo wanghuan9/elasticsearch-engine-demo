@@ -1,6 +1,7 @@
 package com.elasticsearch.engine.demo.proxy;
 
 import com.elasticsearch.engine.base.common.utils.JsonParser;
+import com.elasticsearch.engine.base.mapping.model.extend.PageParam;
 import com.elasticsearch.engine.base.mapping.model.extend.SignParam;
 import com.elasticsearch.engine.base.model.annotion.Sign;
 import com.elasticsearch.engine.base.model.domain.BaseResp;
@@ -19,6 +20,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -79,6 +82,21 @@ public class EsEngineProxyModelQueryTest {
         log.info("res:{}", JsonParser.asJson(resp));
     }
 
+    /**
+     * model查询测试
+     */
+    @Test
+    public void queryByModelTest(){
+        PersonBaseQuery person = new PersonBaseQuery();
+        person.setPageParam(PageParam.builderPage().currentPage(1).pageSize(100).build());
+        person.setSalary(new BigDecimal("67700"));
+        person.setPersonName("张");
+        person.setAddress("天府");
+        person.setCreateTimeStart(LocalDateTime.now().minusDays(300));
+        person.setCreateTimeEnd(LocalDateTime.now());
+        List<PersonEsEntity> res = personEsModelRepository.queryByMode(person);
+        log.info("res:{}", JsonParser.asJson(res));
+    }
 
     /**
      * 固定结果值查询

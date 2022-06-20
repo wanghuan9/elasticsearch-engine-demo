@@ -2,7 +2,7 @@ package com.elasticsearch.engine.demo.domain.es.repository;
 
 import com.elasticsearch.engine.base.model.annotion.EsQuery;
 import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.base.model.domain.BaseESRepository;
+import com.elasticsearch.engine.base.model.domain.BaseEsRepository;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
@@ -23,7 +23,7 @@ import java.util.List;
  * @date 2022/6/2 13:30
  */
 @EsQueryIndex("person_es_index")
-public interface PersonEsSqlRepository extends BaseESRepository<PersonEsEntity, Long> {
+public interface PersonEsSqlRepository extends BaseEsRepository<PersonEsEntity, Long> {
 
     /**
      * 单个查询

@@ -114,7 +114,7 @@ public class ParseQueryBaseTest {
     public void orderTest() {
         PersonBaseQuery person = new PersonBaseQuery();
         person.setPersonName("李狗蛋");
-        person.setStatus(SignParam.builder());
+        person.setSortStatus(SignParam.builder());
         esExecuteHandler.execute(person);
     }
 
