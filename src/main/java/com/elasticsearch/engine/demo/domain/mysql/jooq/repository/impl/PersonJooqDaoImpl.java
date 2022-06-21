@@ -36,7 +36,7 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
      * @param status
      * @return
      */
-//    @JooqEsQuery
+    @JooqEsQuery
     @Override
     public PersonEntity getByPersonNoAndStatus(String personNo, Integer status) {
         return context.selectFrom(PERSON).where(
