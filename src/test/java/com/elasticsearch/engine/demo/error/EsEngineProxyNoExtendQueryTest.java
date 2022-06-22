@@ -1,30 +1,35 @@
 package com.elasticsearch.engine.demo.error;
 
-//import com.elasticsearch.engine.demo.elasticsearchenginedemo.ElasticsearchEngineDemoApplicationTests;
 
-import com.elasticsearch.engine.demo.error.repository.SupplierItemErrorRepository;
-import com.elasticsearch.engine.demo.dto.query.SupplierItem;
+import com.elasticsearch.engine.demo.domain.es.errorrepository.PersonEsNoExtendBaseESRepository;
+import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
 /**
- * 查询引擎 异常场景测试  未继承BaseESRepository
+ * @author wanghuan
+ * @description 异常测试示例
+ * <p>
+ * 注解查询未继承 BaseESRepository
+ * @mail 958721894@qq.com
+ * @date 2022/6/22 09:00
  */
 @Slf4j
 @RunWith(SpringRunner.class)
-//@SpringBootTest(classes = ElasticsearchEngineDemoApplicationTests.class)
+@SpringBootTest
 public class EsEngineProxyNoExtendQueryTest {
 
     @Resource
-    private SupplierItemErrorRepository supplierItemErrorRepository;
+    private PersonEsNoExtendBaseESRepository personEsNoExtendBaseESRepository;
 
     @Test
     public void testNoExtendBaseESRepository() {
-        supplierItemErrorRepository.queryOne(new SupplierItem());
+        personEsNoExtendBaseESRepository.queryOne(new PersonBaseQuery());
     }
 
 

@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo.proxy;
 
 
-import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.es.repository.PersonEsParamRepository;
 import com.google.common.collect.Lists;

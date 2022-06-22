@@ -1,13 +1,13 @@
 package com.elasticsearch.engine.demo.dto.query;
 
-import com.elasticsearch.engine.mapping.annotation.*;
-import com.elasticsearch.engine.mapping.model.extend.PageParam;
-import com.elasticsearch.engine.mapping.model.extend.RangeParam;
-import com.elasticsearch.engine.mapping.model.extend.SignParam;
-import com.elasticsearch.engine.model.annotion.Base;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.annotion.Ignore;
-import com.elasticsearch.engine.model.emenu.EsConnector;
+import com.elasticsearch.engine.base.mapping.annotation.*;
+import com.elasticsearch.engine.base.mapping.model.extend.PageParam;
+import com.elasticsearch.engine.base.mapping.model.extend.RangeParam;
+import com.elasticsearch.engine.base.mapping.model.extend.SignParam;
+import com.elasticsearch.engine.base.model.annotion.Base;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.base.model.annotion.Ignore;
+import com.elasticsearch.engine.base.model.emenu.EsConnector;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -24,14 +24,14 @@ import java.util.List;
 @Data
 public class PersonBaseQuery {
 
+    @Term
+    private BigDecimal salary;
+
     @Terms(value = @Base("item_no"))
     private List<String> personNos;
 
     @Terms
     private List<String> personNoList;
-
-    @Term
-    private BigDecimal salary;
 
     @Range(value = @Base(value = "status", connect = EsConnector.SHOULD), tag = Range.LE_GE)
     private RangeParam rangeStatus;
@@ -63,7 +63,7 @@ public class PersonBaseQuery {
      * 也可以使用 Sign.DEFAULT_STRING 表示
      */
     @Sort
-    private SignParam status;
+    private SignParam sortStatus;
     
     @Aggs(value = @Base("status"), type = Aggs.COUNT_DESC)
     private SignParam groupStatus;

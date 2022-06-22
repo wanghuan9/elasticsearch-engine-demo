@@ -1,8 +1,11 @@
 package com.elasticsearch.engine.demo.domain.mysql.mapper;
 
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonExtendEntity;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
+import com.elasticsearch.engine.mybatis.annotion.MybatisEsQuery;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,4 +19,13 @@ import java.util.List;
 @Mapper
 public interface PersonExtendMapper {
     int insertList(List<PersonExtendEntity> persons);
+
+    @MybatisEsQuery
+    List<PersonEsEntity> queryList(@Param("status") Integer status, @Param("hobby")String hobby);
+
+    @MybatisEsQuery(backColumn = "personNo",backColumnType = String.class)
+    List<PersonEsEntity> queryListBack(@Param("status") Integer status, @Param("hobby")String hobby);
+
+    @MybatisEsQuery(tableName = "pe",backColumn = "personNo",backColumnType = String.class)
+    List<PersonEsEntity> queryListBackPe(@Param("status") Integer status, @Param("hobby")String hobby);
 }

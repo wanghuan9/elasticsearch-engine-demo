@@ -1,13 +1,13 @@
 package com.elasticsearch.engine.demo.proxy;
 
 
-import com.elasticsearch.engine.common.queryhandler.sql.EsSqlExecuteHandler;
-import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.base.common.queryhandler.sql.EsSqlExecuteHandler;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
+import com.elasticsearch.engine.base.model.emenu.SqlFormat;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.es.repository.PersonEsSqlRepository;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
-import com.elasticsearch.engine.model.emenu.SqlFormat;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -128,7 +128,7 @@ public class EsEngineProxySqlQueryTest {
     public void testSqlPageQuery() {
         PersonEntity person = new PersonEntity();
         person.setStatus(1);
-//        person.setSex(1);
+        person.setSex(1);
         List<PersonEntity> results = personEsSqlRepository.pageQuery(person);
         System.out.println(JsonParser.asJson(results));
     }
@@ -151,7 +151,6 @@ public class EsEngineProxySqlQueryTest {
         //having
         String sql6 = "select status,count(*) as count  from supplier_item_spare group by status having count>0";
 
-//        Unknown column
         /**
          * 不支持的sql
          */

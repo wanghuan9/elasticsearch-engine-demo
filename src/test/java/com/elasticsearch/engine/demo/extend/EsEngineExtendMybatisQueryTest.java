@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo.extend;
 
 
-import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.domain.mysql.mapper.PersonExtendMapper;
@@ -135,6 +135,35 @@ public class EsEngineExtendMybatisQueryTest {
     
 
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 关联查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
+
+    /**
+     * 关联查询测试
+     */
+    @Test
+    public void testJoinQueryList() {
+        List<PersonEsEntity> results = personExtendMapper.queryList(4,"踢足球");
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    /**
+     * 关联查询回表测试
+     */
+    @Test
+    public void testJoinQueryListBack() {
+        List<PersonEsEntity> results = personExtendMapper.queryListBack(4,"踢足球");
+        System.out.println(JsonParser.asJson(results));
+    }
+
+
+    /**
+     * 关联查询回表测试 指定回表表名
+     */
+    @Test
+    public void testJoinQueryListBackPe() {
+        List<PersonEsEntity> results = personExtendMapper.queryListBackPe(4,"踢足球");
+        System.out.println(JsonParser.asJson(results));
+    }
+    
 
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 回表查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
 

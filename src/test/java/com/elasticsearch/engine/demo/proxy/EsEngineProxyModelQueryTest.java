@@ -1,15 +1,16 @@
 package com.elasticsearch.engine.demo.proxy;
 
-import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
+import com.elasticsearch.engine.base.mapping.model.extend.PageParam;
+import com.elasticsearch.engine.base.mapping.model.extend.SignParam;
+import com.elasticsearch.engine.base.model.annotion.Sign;
+import com.elasticsearch.engine.base.model.domain.BaseResp;
+import com.elasticsearch.engine.base.model.domain.DefaultAggResp;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.es.repository.PersonEsModelRepository;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.dto.query.PersonSearchResponseRes;
-import com.elasticsearch.engine.mapping.model.extend.SignParam;
-import com.elasticsearch.engine.model.annotion.Sign;
-import com.elasticsearch.engine.model.domain.BaseResp;
-import com.elasticsearch.engine.model.domain.DefaultAggResp;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.search.SearchResponse;
@@ -19,6 +20,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -79,6 +82,21 @@ public class EsEngineProxyModelQueryTest {
         log.info("res:{}", JsonParser.asJson(resp));
     }
 
+    /**
+     * model查询测试
+     */
+    @Test
+    public void queryByModelTest(){
+        PersonBaseQuery person = new PersonBaseQuery();
+        person.setPageParam(PageParam.builderPage().currentPage(1).pageSize(100).build());
+        person.setSalary(new BigDecimal("67700"));
+        person.setPersonName("张");
+        person.setAddress("天府");
+        person.setCreateTimeStart(LocalDateTime.now().minusDays(300));
+        person.setCreateTimeEnd(LocalDateTime.now());
+        List<PersonEsEntity> res = personEsModelRepository.queryByMode(person);
+        log.info("res:{}", JsonParser.asJson(res));
+    }
 
     /**
      * 固定结果值查询

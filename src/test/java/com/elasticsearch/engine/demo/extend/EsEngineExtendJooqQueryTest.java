@@ -1,6 +1,6 @@
 package com.elasticsearch.engine.demo.extend;
 
-import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.domain.mysql.jooq.repository.PersonJooqDao;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;

@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo.extend;
 
 
-import com.elasticsearch.engine.common.utils.JsonParser;
+import com.elasticsearch.engine.base.common.utils.JsonParser;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.domain.mysql.repository.PersonExtendRepository;
 import com.elasticsearch.engine.demo.domain.mysql.repository.PersonRepository;
@@ -42,7 +42,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlOne() {
-        PersonEntity personEntity = personRepository.getByPersonNoAndStatus("US2022060100001", 1);
+        PersonEntity personEntity = personRepository.getByPersonNoAndStatus("US2022060100001", 4);
         log.info("res:{}", JsonParser.asJson(personEntity));
     }
 

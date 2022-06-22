@@ -1,11 +1,11 @@
 package com.elasticsearch.engine.demo.base;
 
-import com.elasticsearch.engine.common.queryhandler.ann.model.EsExecuteHandler;
+import com.elasticsearch.engine.base.common.queryhandler.ann.model.EsExecuteHandler;
+import com.elasticsearch.engine.base.mapping.model.extend.PageParam;
+import com.elasticsearch.engine.base.mapping.model.extend.RangeParam;
+import com.elasticsearch.engine.base.mapping.model.extend.SignParam;
+import com.elasticsearch.engine.base.model.annotion.Sign;
 import com.elasticsearch.engine.demo.dto.query.*;
-import com.elasticsearch.engine.mapping.model.extend.PageParam;
-import com.elasticsearch.engine.mapping.model.extend.RangeParam;
-import com.elasticsearch.engine.mapping.model.extend.SignParam;
-import com.elasticsearch.engine.model.annotion.Sign;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.search.sort.SortOrder;
@@ -114,7 +114,7 @@ public class ParseQueryBaseTest {
     public void orderTest() {
         PersonBaseQuery person = new PersonBaseQuery();
         person.setPersonName("李狗蛋");
-        person.setStatus(SignParam.builder());
+        person.setSortStatus(SignParam.builder());
         esExecuteHandler.execute(person);
     }
 

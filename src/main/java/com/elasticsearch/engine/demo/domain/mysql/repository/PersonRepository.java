@@ -1,9 +1,9 @@
 package com.elasticsearch.engine.demo.domain.mysql.repository;
 
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
-import com.elasticsearch.engine.model.annotion.EsQueryIndex;
-import com.elasticsearch.engine.model.annotion.JpaEsQuery;
+import com.elasticsearch.engine.jpa.annotion.JpaEsQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -21,7 +21,7 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
     @JpaEsQuery
     PersonEntity getByPersonNoAndStatus(String personNo, Integer status);
 
-    @JpaEsQuery
+//    @JpaEsQuery
     List<PersonEntity> findByPersonNoIn(List<String> personNo);
 
     @JpaEsQuery

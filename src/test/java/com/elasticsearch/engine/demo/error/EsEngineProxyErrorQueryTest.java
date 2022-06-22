@@ -1,39 +1,48 @@
 package com.elasticsearch.engine.demo.error;
 
-//import com.elasticsearch.engine.demo.elasticsearchenginedemo.ElasticsearchEngineDemoApplicationTests;
 
-import com.elasticsearch.engine.demo.error.repository.SupplierItemErrorRepository2;
-import com.elasticsearch.engine.demo.error.repository.SupplierItemParamErrorRepository;
-import com.elasticsearch.engine.demo.dto.query.SupplierItem;
-import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
+import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
+import com.elasticsearch.engine.demo.domain.es.errorrepository.PersonEsNoEsQueryIndexErrorRepository;
+import com.elasticsearch.engine.demo.domain.es.errorrepository.PersonEsParamErrorRepository;
+import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
 /**
- * 查询引擎 查询测试
+ * @author wanghuan
+ * @description 异常测试示例
+ * <p>
+ * 注解查询 入参 出差异常
+ * <p>
+ * No qualifying bean of type 'com.elasticsearch.engine.demo.domain.es.error.PersonEsNoExtendBaseESRepository'
+ * @mail 958721894@qq.com
+ * @date 2022/6/22 09:00
  */
 @Slf4j
 @RunWith(SpringRunner.class)
-//@SpringBootTest(classes = ElasticsearchEngineDemoApplicationTests.class)
+@SpringBootTest
 public class EsEngineProxyErrorQueryTest {
 
     @Resource
-    private SupplierItemErrorRepository2 supplierItemErrorRepository2;
+    private PersonEsParamErrorRepository personEsParamErrorRepository;
+
 
     @Resource
-    private SupplierItemParamErrorRepository supplierItemParamErrorRepository;
+    private PersonEsNoEsQueryIndexErrorRepository personEsNoEsQueryIndexErrorRepository;
 
 
     /**
-     * 测试为添加 @EsQueryIndex
+     * 测试未添加 @EsQueryIndex
+     * com.elasticsearch.engine.base.model.exception.EsEngineQueryException: undefine query-index @EsQueryIndex
      */
     @Test
     public void testUndefineEsQueryIndexError() {
-        supplierItemErrorRepository2.queryOne("", 1);
+        personEsNoEsQueryIndexErrorRepository.queryOne("", 1);
     }
 
     /**
@@ -41,7 +50,7 @@ public class EsEngineProxyErrorQueryTest {
      */
     @Test
     public void testRequestParamError() {
-        supplierItemParamErrorRepository.queryOne(new SupplierItem(), new SupplierItemEntity());
+        personEsParamErrorRepository.queryOne(new PersonBaseQuery(), new PersonEsEntity());
     }
 
 
@@ -50,7 +59,7 @@ public class EsEngineProxyErrorQueryTest {
      */
     @Test
     public void testResponseParamError() {
-        supplierItemParamErrorRepository.queryOne(new SupplierItem());
+        personEsParamErrorRepository.queryOne(new PersonBaseQuery());
     }
 
 }
