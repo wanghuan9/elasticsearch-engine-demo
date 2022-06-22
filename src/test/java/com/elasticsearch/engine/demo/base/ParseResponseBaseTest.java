@@ -9,7 +9,6 @@ import com.elasticsearch.engine.base.model.domain.DefaultAggResp;
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
-import com.elasticsearch.engine.demo.execute.resultmodel.SupplierItemEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +43,7 @@ public class ParseResponseBaseTest {
     public void findByProductNameAndStatusTest() {
         PersonBaseQuery person = new PersonBaseQuery();
         person.setRangeStatus(RangeParam.builder().left(0).right(1).build());
-        BaseResp<SupplierItemEntity> baseHitBaseResp = esExecuteHandler.execute(person, PersonEsEntity.class);
+        BaseResp<PersonEsEntity> baseHitBaseResp = esExecuteHandler.execute(person, PersonEsEntity.class);
         log.info(JsonParser.asJson(baseHitBaseResp));
     }
 
