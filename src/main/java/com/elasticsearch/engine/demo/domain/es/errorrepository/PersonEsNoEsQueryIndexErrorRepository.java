@@ -1,4 +1,4 @@
-package com.elasticsearch.engine.demo.domain.es.error;
+package com.elasticsearch.engine.demo.domain.es.errorrepository;
 
 import com.elasticsearch.engine.base.mapping.annotation.Collapse;
 import com.elasticsearch.engine.base.mapping.annotation.Term;

@@ -2,8 +2,8 @@ package com.elasticsearch.engine.demo.error;
 
 
 import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
-import com.elasticsearch.engine.demo.domain.es.error.PersonEsNoEsQueryIndexErrorRepository;
-import com.elasticsearch.engine.demo.domain.es.error.PersonEsParamErrorRepository;
+import com.elasticsearch.engine.demo.domain.es.errorrepository.PersonEsNoEsQueryIndexErrorRepository;
+import com.elasticsearch.engine.demo.domain.es.errorrepository.PersonEsParamErrorRepository;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

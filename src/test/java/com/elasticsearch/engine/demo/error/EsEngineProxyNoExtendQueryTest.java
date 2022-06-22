@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo.error;
 
 
-import com.elasticsearch.engine.demo.domain.es.error.PersonEsNoExtendBaseESRepository;
+import com.elasticsearch.engine.demo.domain.es.errorrepository.PersonEsNoExtendBaseESRepository;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

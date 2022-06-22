@@ -151,7 +151,6 @@ public class EsEngineProxySqlQueryTest {
         //having
         String sql6 = "select status,count(*) as count  from supplier_item_spare group by status having count>0";
 
-//        Unknown column
         /**
          * 不支持的sql
          */
