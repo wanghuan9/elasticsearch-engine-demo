@@ -27,7 +27,7 @@ public interface PersonMapper {
     @MybatisEsQuery
     PersonEsEntity queryOne(@Param("personNo") String personNo, @Param("status") Integer status);
 
-    @MybatisEsQuery
+//    @MybatisEsQuery
     List<PersonEsEntity> queryList(List<String> personNoList);
 
     @MybatisEsQuery

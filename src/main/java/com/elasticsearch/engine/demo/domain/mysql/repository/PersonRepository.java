@@ -21,7 +21,7 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
     @JpaEsQuery
     PersonEntity getByPersonNoAndStatus(String personNo, Integer status);
 
-    @JpaEsQuery
+//    @JpaEsQuery
     List<PersonEntity> findByPersonNoIn(List<String> personNo);
 
     @JpaEsQuery

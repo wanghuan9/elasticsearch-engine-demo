@@ -48,7 +48,7 @@ public class PersonJooqDaoImpl implements PersonJooqDao {
      * @param personNoList
      * @return
      */
-    @JooqEsQuery
+//    @JooqEsQuery
     @Override
     public List<PersonEntity> findByPersonNoIn(List<String> personNoList) {
         return context.select().from(PERSON).where(

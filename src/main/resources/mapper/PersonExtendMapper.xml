@@ -9,4 +9,22 @@
             (#{item.personNo}, #{item.mail}, #{item.hobby}, now())
         </foreach>
     </insert>
+
+    <select id="queryList" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT * FROM person p INNER JOIN person_extend pe
+        ON p.person_no = pe.person_no
+        WHERE p.status = #{status} AND pe.hobby=#{hobby}
+    </select>
+
+    <select id="queryListBack" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT * FROM person p INNER JOIN person_extend pe
+        ON p.person_no = pe.person_no
+        WHERE p.status = #{status} AND pe.hobby=#{hobby}
+    </select>
+
+    <select id="queryListBackPe" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
+        SELECT * FROM person p INNER JOIN person_extend pe
+        ON p.person_no = pe.person_no
+        WHERE p.status = #{status} AND pe.hobby=#{hobby}
+    </select>
 </mapper>

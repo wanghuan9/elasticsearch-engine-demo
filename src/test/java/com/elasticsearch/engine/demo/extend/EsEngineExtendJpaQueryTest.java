@@ -42,7 +42,7 @@ public class EsEngineExtendJpaQueryTest {
      */
     @Test
     public void testSqlOne() {
-        PersonEntity personEntity = personRepository.getByPersonNoAndStatus("US2022060100001", 1);
+        PersonEntity personEntity = personRepository.getByPersonNoAndStatus("US2022060100001", 4);
         log.info("res:{}", JsonParser.asJson(personEntity));
     }
 
