@@ -20,11 +20,11 @@ import java.util.List;
 
 /**
  * @author wanghuan
- * @description 自定义扩展响应
+ * @description 构建基础响应测试模块
  * <p>
  * 当查询结果比较复杂 不是简单的将hits转为json对象时, 可以通过自定义响应对结果进行扩展
  * <p>
- * 例如 负责的分组嵌套查询, 或者响应结果未map之类的
+ * 例如 复杂的分组嵌套查询, 或者响应结果未map之类的
  * @mail 958721894@qq.com
  * @date 2022/6/2 10:59
  */
