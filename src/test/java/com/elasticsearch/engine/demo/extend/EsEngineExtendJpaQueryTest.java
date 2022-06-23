@@ -20,9 +20,6 @@ import java.util.List;
 /**
  * @author wanghuan
  * @description mybatis查询测试示例
- * <p>
- * 查询的PersonEsParamRepository 必须继承 BaseESRepository 否则无法扫描注册
- * <p>
  * @mail 958721894@qq.com
  * @date 2022/6/2 2022/6/2 14:24
  */
