@@ -21,11 +21,18 @@ public interface PersonExtendMapper {
     int insertList(List<PersonExtendEntity> persons);
 
     @MybatisEsQuery
-    List<PersonEsEntity> queryList(@Param("status") Integer status, @Param("hobby")String hobby);
+    List<PersonEsEntity> queryList(@Param("status") Integer status, @Param("hobby") String hobby);
 
-    @MybatisEsQuery(backColumn = "personNo",backColumnType = String.class)
-    List<PersonEsEntity> queryListBack(@Param("status") Integer status, @Param("hobby")String hobby);
+    @MybatisEsQuery(backColumn = "personNo", backColumnType = String.class)
+    List<PersonEsEntity> queryListBack(@Param("status") Integer status, @Param("hobby") String hobby);
 
-    @MybatisEsQuery(tableName = "pe",backColumn = "personNo",backColumnType = String.class)
-    List<PersonEsEntity> queryListBackPe(@Param("status") Integer status, @Param("hobby")String hobby);
+    /**
+     * sql中person_extend
+     *
+     * @param status
+     * @param hobby
+     * @return
+     */
+    @MybatisEsQuery(tableName = "person_extend", backColumn = "personNo", backColumnType = String.class)
+    List<PersonEsEntity> queryListBackPe(@Param("status") Integer status, @Param("hobby") String hobby);
 }

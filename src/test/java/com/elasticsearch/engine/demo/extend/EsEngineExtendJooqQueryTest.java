@@ -1,7 +1,9 @@
 package com.elasticsearch.engine.demo.extend;
 
 import com.elasticsearch.engine.base.common.utils.JsonParser;
+import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.domain.mysql.entity.PersonEntity;
+import com.elasticsearch.engine.demo.domain.mysql.jooq.repository.PersonExtendJooqDao;
 import com.elasticsearch.engine.demo.domain.mysql.jooq.repository.PersonJooqDao;
 import com.elasticsearch.engine.demo.dto.result.PersonGroupResult;
 import com.google.common.collect.Lists;
@@ -25,9 +27,12 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EsEngineExtendJooqQueryTest {
-    
+
     @Resource
     private PersonJooqDao personJooqDao;
+
+    @Resource
+    private PersonExtendJooqDao personExtendJooqDao;
 
     /**
      * 单个查询
@@ -124,6 +129,33 @@ public class EsEngineExtendJooqQueryTest {
 
 
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 关联查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
+
+    /**
+     * 关联查询测试
+     */
+    @Test
+    public void testJoinQueryList() {
+        List<PersonEsEntity> results = personExtendJooqDao.queryList(4, "踢足球");
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    /**
+     * 关联查询回表测试
+     */
+    @Test
+    public void testJoinQueryListBack() {
+        List<PersonEsEntity> results = personExtendJooqDao.queryListBack(4, "踢足球");
+        System.out.println(JsonParser.asJson(results));
+    }
+
+    /**
+     * 关联查询回表测试 指定回表表名
+     */
+    @Test
+    public void testJoinQueryListBackPe() {
+        List<PersonEsEntity> results = personExtendJooqDao.queryListBackPe(4, "踢足球");
+        System.out.println(JsonParser.asJson(results));
+    }
 
     //☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺ 回表查询测试 ☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺☻,*.,*.☺//
 
