@@ -1,7 +1,7 @@
 # elasticsearch-engine-demo
 
 #### 介绍
-elasticsearch-engine demo
+elasticsearch-engine-demo
 
 #### 软件架构
 
