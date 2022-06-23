@@ -5,6 +5,8 @@ elasticsearch-engine-demo 是 [elasticsearch-engine](https://github.com/wanghuan
 
 包括环境搭建和详细的测试示例
 
+github地址: https://github.com/wanghuan9/elasticsearch-engine-demo
+
 ## 2.架构模块
 
 base:  base测试模块为注解查询测试示例 具体的一个查询语句测试
