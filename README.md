@@ -17,16 +17,15 @@ extend: extend测试模块为orm扩展示例 包括 mybatis,jpa,jooq 普通查�
 
 error:  error测试模块常见的异常测试示例 包括接口定义不符合规则,参数异常,sql异常,sql不被支持
 
-# 4.测试环境搭建
+## 4.测试环境搭建
 
-## 4.1 建表和索引
+### 4.1 建表和索引
 
 doc/mysql_init.sql
 
 doc/elasticsearch.init.txt
 
-
-## 4.2 测试数据初始化
+### 4.2 测试数据初始化
 ```
 com.elasticsearch.engine.demo.InitDataTest#initData
 ```
