@@ -27,7 +27,7 @@ public class PersonBaseQuery {
     @Term
     private BigDecimal salary;
 
-    @Terms(value = @Base("item_no"))
+    @Terms(value = @Base("person_no"))
     private List<String> personNos;
 
     @Terms
