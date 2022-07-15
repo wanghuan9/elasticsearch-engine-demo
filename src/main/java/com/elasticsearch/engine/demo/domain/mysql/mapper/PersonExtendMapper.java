@@ -33,6 +33,6 @@ public interface PersonExtendMapper {
      * @param hobby
      * @return
      */
-    @MybatisEsQuery(tableName = "person_extend", backColumn = "personNo", backColumnType = String.class)
+    @MybatisEsQuery(backTable = "person_extend", backColumn = "personNo", backColumnType = String.class)
     List<PersonEsEntity> queryListBackPe(@Param("status") Integer status, @Param("hobby") String hobby);
 }

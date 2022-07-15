@@ -54,7 +54,7 @@ public class PersonExtendJooqDaoImpl implements PersonExtendJooqDao {
     }
 
 
-    @JooqEsQuery(tableName = "person_extend", backColumn = "personNo", backColumnType = String.class)
+    @JooqEsQuery(backTable = "person_extend", backColumn = "personNo", backColumnType = String.class)
     @Override
     public List<PersonEsEntity> queryListBackPe(Integer status, String hobby) {
         return context.select().from(PERSON).leftJoin(PERSON_EXTEND).on(PERSON.PERSON_NO.eq(PERSON_EXTEND.PERSON_NO))

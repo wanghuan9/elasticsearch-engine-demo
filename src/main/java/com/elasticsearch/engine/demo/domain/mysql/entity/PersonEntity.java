@@ -1,5 +1,7 @@
 package com.elasticsearch.engine.demo.domain.mysql.entity;
 
+import com.elasticsearch.engine.base.model.annotion.ESColumn;
+import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +24,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity // jpa的注解，需要加
+@EsQueryIndex("")
 @Table(name = "person")
 public class PersonEntity {
     @Id
@@ -35,5 +38,6 @@ public class PersonEntity {
     private Integer sex;
     private String address;
     private LocalDateTime createTime;
+    @ESColumn(table = "person", sqlColumn = "create_user", esColumn = "createUser")
     private String createUser;
 }

@@ -1,7 +1,7 @@
 package com.elasticsearch.engine.demo;
 
+import com.elasticsearch.engine.base.common.proxy.EsProxyExecuteHandler;
 import com.elasticsearch.engine.base.common.proxy.EsQueryProxy;
-import com.elasticsearch.engine.base.common.queryhandler.EsProxyExecuteHandler;
 import com.elasticsearch.engine.demo.domain.es.repository.PersonEsModelRepository;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.service.PersonTestDataInitService;

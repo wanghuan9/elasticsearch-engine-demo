@@ -1,5 +1,6 @@
 package com.elasticsearch.engine.demo.domain.es.entity;
 
+import com.elasticsearch.engine.base.model.annotion.ESColumn;
 import com.elasticsearch.engine.base.model.annotion.EsQueryIndex;
 import lombok.Data;
 
@@ -25,6 +26,7 @@ public class PersonEsEntity  {
     private Integer sex;
     private String address;
     private LocalDateTime createTime;
+    @ESColumn(table = "person", sqlColumn = "create_user", esColumn = "createUser")
     private String createUser;
     private String mail;
     private String hobby;

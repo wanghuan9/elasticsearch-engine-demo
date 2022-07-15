@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.elasticsearch.engine.demo.domain.mysql.mapper.PersonExtendMapper">
+    
+    <sql id="baseColumn">
+        p.id, p.address, p.company, p.createTime, p.createUser, p.personName, p.personNo, p.phone, p.salary, p.sex, p.status,
+        pe.mail,pe.hobby
+    </sql>
+    
     <insert id="insertList">
         insert into person_extend (person_no, mail, hobby, create_time)
         values
@@ -11,7 +17,8 @@
     </insert>
 
     <select id="queryList" resultType="com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity">
-        SELECT * FROM person p INNER JOIN person_extend pe
+        SELECT <include refid="baseColumn"/>
+        FROM person p INNER JOIN person_extend pe
         ON p.person_no = pe.person_no
         WHERE p.status = #{status} AND pe.hobby=#{hobby}
     </select>
