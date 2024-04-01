@@ -2,6 +2,7 @@ package com.elasticsearch.engine.demo.proxy;
 
 import com.elasticsearch.engine.base.common.utils.JsonParser;
 import com.elasticsearch.engine.base.mapping.model.extend.PageParam;
+import com.elasticsearch.engine.base.mapping.model.extend.PageParam.OrderBuilder;
 import com.elasticsearch.engine.base.mapping.model.extend.SignParam;
 import com.elasticsearch.engine.base.model.annotion.Sign;
 import com.elasticsearch.engine.base.model.domain.BaseResp;
@@ -14,6 +15,7 @@ import com.elasticsearch.engine.demo.dto.query.PersonSearchResponseRes;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.search.sort.SortOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -77,6 +79,23 @@ public class EsEngineProxyModelQueryTest {
     public void queryListResponseBaseResp() {
         PersonBaseQuery person = new PersonBaseQuery();
         List<String> itemNoList = Lists.newArrayList("US2022060100001","US2022060100002");
+        person.setPersonNoList(itemNoList);
+        BaseResp<PersonEsEntity> resp = personEsModelRepository.queryListBaseResp(person);
+        log.info("res:{}", JsonParser.asJson(resp));
+    }
+
+    /**
+     * 分页查询测试
+     */
+    @Test
+    public void queryPageResponseBaseResp() {
+        PersonBaseQuery person = new PersonBaseQuery();
+        //设置分页参数
+        PageParam pageQuery = PageParam.builderPage().currentPage(2).pageSize(20)
+            .order(new OrderBuilder().orderFiled("create_time").orderType(
+                SortOrder.DESC)).build();
+        person.setPageParam(pageQuery);
+        List<String> itemNoList = Lists.newArrayList("US2022060100001", "US2022060100002");
         person.setPersonNoList(itemNoList);
         BaseResp<PersonEsEntity> resp = personEsModelRepository.queryListBaseResp(person);
         log.info("res:{}", JsonParser.asJson(resp));
