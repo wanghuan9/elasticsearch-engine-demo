@@ -12,6 +12,7 @@ import com.elasticsearch.engine.demo.domain.es.repository.PersonEsModelRepositor
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.dto.query.PersonSearchResponseRes;
+import com.elasticsearch.engine.demo.dto.query.ProductQueryByEs4AppReq;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.search.SearchResponse;
@@ -167,5 +168,23 @@ public class EsEngineProxyModelQueryTest {
         PersonEsEntity personEsEntity = personEsModelRepository.queryByDto(person);
         log.info("res:{}", JsonParser.asJson(personEsEntity));
     }
+
+    /**
+     * 复杂查询解析耗时测试
+     */
+    @Test
+    public void testPage() {
+        ProductQueryByEs4AppReq req = new ProductQueryByEs4AppReq();
+        req.setMerchantId(1231);
+        req.setProductType(1);
+        req.setStatus(10);
+        PageParam pageQuery = PageParam.builderPage().currentPage(1).pageSize(20)
+            .order(new OrderBuilder().orderFiled("create_time").orderType(
+                SortOrder.DESC)).build();
+        req.setPageParam(pageQuery);
+        PersonEsEntity personEsEntity = personEsModelRepository.page(req);
+        log.info("res:{}", JsonParser.asJson(personEsEntity));
+    }
+
 
 }

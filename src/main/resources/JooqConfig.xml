@@ -4,7 +4,7 @@
         <driver>com.mysql.jdbc.Driver</driver>
         <url>jdbc:mysql://127.0.0.1:3306/user?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;serverTimezone=CTT</url>
         <user>root</user>
-        <password>admins</password>
+        <password>123456</password>
     </jdbc>
     <generator>
         <!-- 代码生成器 -->

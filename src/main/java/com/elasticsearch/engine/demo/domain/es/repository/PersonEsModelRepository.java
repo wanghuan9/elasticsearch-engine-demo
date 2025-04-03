@@ -11,6 +11,7 @@ import com.elasticsearch.engine.demo.domain.es.entity.PersonEsEntity;
 import com.elasticsearch.engine.demo.dto.query.PersonBaseQuery;
 import com.elasticsearch.engine.demo.dto.query.PersonResExtend;
 import com.elasticsearch.engine.demo.dto.query.PersonSearchResponseRes;
+import com.elasticsearch.engine.demo.dto.query.ProductQueryByEs4AppReq;
 import org.elasticsearch.action.search.SearchResponse;
 
 import java.util.List;
@@ -97,5 +98,11 @@ public interface PersonEsModelRepository extends BaseEsRepository<PersonEsEntity
     @Include({"personName"})
     PersonEsEntity queryByDto(PersonBaseQuery param);
 
-
+    /**
+     * 复杂查询解析耗时测试
+     *
+     * @param param
+     * @return
+     */
+    PersonEsEntity page(ProductQueryByEs4AppReq param);
 }
